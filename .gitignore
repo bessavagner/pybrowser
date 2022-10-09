@@ -1,0 +1,14 @@
+# IDE folders and files
+.vscode/
+.pytest_cache/
+__pycache__
+
+# Enviroments and development tools
+.py310
+.py38
+.py39
+.venv
+dev_ipynb/
+
+# Python notebooks
+*.log
