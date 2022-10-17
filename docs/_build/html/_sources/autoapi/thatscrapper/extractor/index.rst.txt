@@ -1,0 +1,86 @@
+:py:mod:`thatscrapper.extractor`
+================================
+
+.. py:module:: thatscrapper.extractor
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   thatscrapper.extractor.Element
+   thatscrapper.extractor.Table
+   thatscrapper.extractor.UnorderedList
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   thatscrapper.extractor.download
+   thatscrapper.extractor.html
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   thatscrapper.extractor.WebElement
+
+
+.. py:data:: WebElement
+   
+
+   
+
+.. py:class:: Element(crawler: thatscrapper.browser.Crawler, value='table', by='tag name', **kwargs)
+
+   .. py:method:: html()
+
+
+
+.. py:class:: Table(crawler: thatscrapper.browser.Crawler, value='table', by='tag name', **kwargs)
+
+   Bases: :py:obj:`Element`
+
+   .. py:property:: raw
+
+
+   .. py:property:: data
+
+
+
+.. py:class:: UnorderedList(crawler: thatscrapper.browser.Crawler, value='div', by='tag name', **kwargs)
+
+   Bases: :py:obj:`Element`
+
+   .. py:property:: parent
+
+
+   .. py:property:: ul
+
+
+   .. py:property:: items
+
+
+   .. py:method:: __getitem__(idx: int)
+
+
+   .. py:method:: __len__()
+
+
+
+.. py:function:: download(link: str, file_name)
+
+
+.. py:function:: html(element: WebElement)
+
+
