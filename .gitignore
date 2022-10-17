@@ -10,5 +10,5 @@ __pycache__
 .venv
 dev_ipynb/
 
-# Python notebooks
+# logs
 *.log
