@@ -1,5 +1,5 @@
 :py:mod:`thatscrapper.common.exceptions`
-=====================================
+========================================
 
 .. py:module:: thatscrapper.common.exceptions
 

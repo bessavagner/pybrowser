@@ -107,9 +107,9 @@
 </pre></div>
 </div>
 <p>For a single purpose web scraping single script that means some couple of lines like that. However, for a larger testing or scraping project, that can become anoying. With using <code class="docutils literal notranslate"><span class="pre">thatscrapper</span></code> above script becomes:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">pb</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">ts</span>
 
-<span class="n">crawler</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">Crawler</span><span class="p">()</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;http://somedomain/url_that_delays_loading&quot;</span><span class="p">)</span>
+<span class="n">crawler</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Crawler</span><span class="p">()</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;http://somedomain/url_that_delays_loading&quot;</span><span class="p">)</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">element_id</span><span class="p">(</span><span class="s2">&quot;myDynamicElement&quot;</span><span class="p">)</span>
 <span class="n">crawler</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
@@ -172,9 +172,9 @@
 </table>
 <p>To use other driver, pass it’s browser name to <code class="docutils literal notranslate"><span class="pre">Crawler</span></code> class:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">pb</span>
+<span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">ts</span>
 
-<span class="n">crawler</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">browser</span><span class="o">=</span><span class="s1">&#39;chrome&#39;</span><span class="p">)</span>
+<span class="n">crawler</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">browser</span><span class="o">=</span><span class="s1">&#39;chrome&#39;</span><span class="p">)</span>
 
 <span class="c1"># extract data from</span>
 <span class="n">crawler</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://www.techlistic.com/p/demo-selenium-practice.html&quot;</span><span class="p">)</span>
@@ -230,7 +230,7 @@
 <section id="todos">
 <h2>TODOs<a class="headerlink" href="#todos" title="Permalink to this heading"></a></h2>
 <ul class="simple">
-<li><p>[ ] Test all methods (current coverage: 10/16).</p></li>
+<li><p>[ ] Test all methods (current coverage: 61%).</p></li>
 <li><p>[ ] Implement data extraction modules and classes.</p></li>
 <li><p>[ ] Link or adapt to a database handler.</p></li>
 <li><p>[ ] Implement an API boilerplate builder. That API is to serve data extracted from extractor modules and classes.</p></li>

@@ -1,5 +1,5 @@
 :py:mod:`thatscrapper.browser`
-===========================
+==============================
 
 .. py:module:: thatscrapper.browser
 

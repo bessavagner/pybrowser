@@ -1,5 +1,5 @@
 :py:mod:`thatscrapper.common.logger`
-=================================
+====================================
 
 .. py:module:: thatscrapper.common.logger
 

@@ -1,5 +1,5 @@
 :py:mod:`thatscrapper.data`
-========================
+===========================
 
 .. py:module:: thatscrapper.data
 

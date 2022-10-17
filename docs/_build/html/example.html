@@ -92,7 +92,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0.1
 </pre></div>
 </div>
 </div>
@@ -134,16 +134,16 @@
 </section>
 <section id="extract-a-table">
 <h2>Extract a table<a class="headerlink" href="#extract-a-table" title="Permalink to this heading"></a></h2>
-<p>To scrap, collect ou handle data informations, such as text, tables or images, <code class="docutils literal notranslate"><span class="pre">pybroswer</span></code> comes with the module <code class="docutils literal notranslate"><span class="pre">extractor</span></code> to work with elements or addresses and return the desired data as needed. Here is an example of obtaining a table as <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span> <span class="pre">object</span></code>:</p>
+<p>To scrap, collect ou handle data informations, such as text, tables or images, <code class="docutils literal notranslate"><span class="pre">thatscrapper</span></code> comes with the module <code class="docutils literal notranslate"><span class="pre">extractor</span></code> to work with elements or addresses and return the desired data as needed. Here is an example of obtaining a table as <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span> <span class="pre">object</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">pb</span>
+<span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">ts</span>
 
-<span class="n">crawler</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">browser</span><span class="o">=</span><span class="s1">&#39;chrome&#39;</span><span class="p">)</span>
+<span class="n">crawler</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">browser</span><span class="o">=</span><span class="s1">&#39;chrome&#39;</span><span class="p">)</span>
 
 <span class="n">crawler</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://www.techlistic.com/p/demo-selenium-practice.html&quot;</span><span class="p">)</span>
-<span class="n">costumers_table</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">extractor</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">crawler</span><span class="p">,</span> <span class="s2">&quot;customers&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">costumers_table</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">extractor</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">crawler</span><span class="p">,</span> <span class="s2">&quot;customers&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
 
 <span class="c1"># table as pandas dataframe (see https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">costumers_table</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
@@ -172,16 +172,16 @@
 <p>As stated, the  <code class="docutils literal notranslate"><span class="pre">extractor</span></code> module is suitable to retrieve informations. Like in example above, where <code class="docutils literal notranslate"><span class="pre">Table</span></code> is responsible to get the element convert the html into a dataframe. Here is an example where we can obtain the list items in html format.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">pb</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">ts</span>
 
-<span class="n">crawler</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">browser</span><span class="o">=</span><span class="s1">&#39;chrome&#39;</span><span class="p">,</span> <span class="n">headless</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">crawler</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">browser</span><span class="o">=</span><span class="s1">&#39;chrome&#39;</span><span class="p">,</span> <span class="n">headless</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">crawler</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://www.techlistic.com/p/demo-selenium-practice.html&quot;</span><span class="p">)</span>
 
-<span class="n">items</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">extractor</span><span class="o">.</span><span class="n">UnorderedList</span><span class="p">(</span><span class="n">crawler</span><span class="p">,</span> <span class="s2">&quot;(//div[@dir=</span><span class="se">\&#39;</span><span class="s2">ltr</span><span class="se">\&#39;</span><span class="s2">])[7]&quot;</span><span class="p">,</span> <span class="s2">&quot;xpath&quot;</span><span class="p">)</span>
+<span class="n">items</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">extractor</span><span class="o">.</span><span class="n">UnorderedList</span><span class="p">(</span><span class="n">crawler</span><span class="p">,</span> <span class="s2">&quot;(//div[@dir=</span><span class="se">\&#39;</span><span class="s2">ltr</span><span class="se">\&#39;</span><span class="s2">])[7]&quot;</span><span class="p">,</span> <span class="s2">&quot;xpath&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-    <span class="n">li</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">extractor</span><span class="o">.</span><span class="n">html</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">li</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">extractor</span><span class="o">.</span><span class="n">html</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
 <span class="n">crawler</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
@@ -202,9 +202,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">pb</span>
+<span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">ts</span>
 
-<span class="n">crawler</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">Crawler</span><span class="p">()</span>
+<span class="n">crawler</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Crawler</span><span class="p">()</span>
 
 <span class="c1"># let&#39;s get some photos of cats</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;cat&quot;</span>
@@ -222,7 +222,7 @@
     <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;./(.*?)\?&quot;</span><span class="p">,</span> <span class="n">img_url</span><span class="p">)</span>
     <span class="n">img_filename</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_filename</span><span class="p">)</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">extractor</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">img_url</span><span class="p">,</span> <span class="n">img_filename</span><span class="p">)</span>
+    <span class="n">ts</span><span class="o">.</span><span class="n">extractor</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">img_url</span><span class="p">,</span> <span class="n">img_filename</span><span class="p">)</span>
 <span class="n">crawler</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 </div>

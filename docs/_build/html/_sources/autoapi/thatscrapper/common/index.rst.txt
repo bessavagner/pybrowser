@@ -1,5 +1,5 @@
 :py:mod:`thatscrapper.common`
-==========================
+=============================
 
 .. py:module:: thatscrapper.common
 
