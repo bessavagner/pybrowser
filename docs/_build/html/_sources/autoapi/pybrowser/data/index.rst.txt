@@ -1,7 +1,7 @@
-:py:mod:`pybrowser.data`
+:py:mod:`thatscrapper.data`
 ========================
 
-.. py:module:: pybrowser.data
+.. py:module:: thatscrapper.data
 
 
 Module Contents
@@ -12,11 +12,11 @@ Classes
 
 .. autoapisummary::
 
-   pybrowser.data.BrowserCleaner
-   pybrowser.data.FirefoxCleaner
-   pybrowser.data.ChromeCleaner
-   pybrowser.data.EdgeCleaner
-   pybrowser.data.SafariCleaner
+   thatscrapper.data.BrowserCleaner
+   thatscrapper.data.FirefoxCleaner
+   thatscrapper.data.ChromeCleaner
+   thatscrapper.data.EdgeCleaner
+   thatscrapper.data.SafariCleaner
 
 
 
@@ -26,8 +26,8 @@ Attributes
 
 .. autoapisummary::
 
-   pybrowser.data.WebElement
-   pybrowser.data.Cleaner
+   thatscrapper.data.WebElement
+   thatscrapper.data.Cleaner
 
 
 .. py:data:: WebElement

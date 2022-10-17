@@ -1,7 +1,7 @@
-:py:mod:`pybrowser.common.logger`
+:py:mod:`thatscrapper.common.logger`
 =================================
 
-.. py:module:: pybrowser.common.logger
+.. py:module:: thatscrapper.common.logger
 
 
 Module Contents
@@ -13,7 +13,7 @@ Functions
 
 .. autoapisummary::
 
-   pybrowser.common.logger.log
+   thatscrapper.common.logger.log
 
 
 

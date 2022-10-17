@@ -6,7 +6,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u"pybrowser"
+project = u"thatscrapper"
 copyright = u"2022, Vagner Bessa"
 author = u"Vagner Bessa"
 

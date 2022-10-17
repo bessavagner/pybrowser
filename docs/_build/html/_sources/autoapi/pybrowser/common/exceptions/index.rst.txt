@@ -1,7 +1,7 @@
-:py:mod:`pybrowser.common.exceptions`
+:py:mod:`thatscrapper.common.exceptions`
 =====================================
 
-.. py:module:: pybrowser.common.exceptions
+.. py:module:: thatscrapper.common.exceptions
 
 
 Module Contents

@@ -6,7 +6,7 @@
             "source": [
                 "# Example usage\n",
                 "\n",
-                "To use `pybrowser` in a project:"
+                "To use `thatscrapper` in a project:"
             ]
         },
         {
@@ -15,9 +15,9 @@
             "metadata": {},
             "outputs": [],
             "source": [
-                "import pybrowser\n",
+                "import thatscrapper\n",
                 "\n",
-                "print(pybrowser.__version__)"
+                "print(thatscrapper.__version__)"
             ]
         },
         {
@@ -36,9 +36,9 @@
             "outputs": [],
             "source": [
                 "import time\n",
-                "import pybrowser\n",
+                "import thatscrapper\n",
                 "\n",
-                "crawler = pybrowser.Crawler()\n",
+                "crawler = thatscrapper.Crawler()\n",
                 "# open page\n",
                 "crawler.goto(\"https://phptravels.com/demo/\")\n",
                 "# get form wrapper\n",
@@ -78,7 +78,7 @@
             "outputs": [],
             "source": [
                 "import time\n",
-                "import pybrowser as pb\n",
+                "import thatscrapper as pb\n",
                 "\n",
                 "crawler = pb.Crawler(browser='chrome')\n",
                 "\n",
@@ -118,7 +118,7 @@
                 }
             ],
             "source": [
-                "import pybrowser as pb\n",
+                "import thatscrapper as pb\n",
                 "\n",
                 "crawler = pb.Crawler(browser='chrome', headless=True)\n",
                 "\n",
@@ -148,7 +148,7 @@
             "outputs": [],
             "source": [
                 "import re\n",
-                "import pybrowser as pb\n",
+                "import thatscrapper as pb\n",
                 "\n",
                 "crawler = pb.Crawler()\n",
                 "\n",
@@ -224,9 +224,9 @@
             "outputs": [],
             "source": [
                 "import time\n",
-                "import pybrowser\n",
+                "import thatscrapper\n",
                 "\n",
-                "crawler = pybrowser.Crawler()\n",
+                "crawler = thatscrapper.Crawler()\n",
                 "\n",
                 "url = \"https://unixpapa.com/js/testmouse.html\"\n",
                 "crawler.goto(url)\n",

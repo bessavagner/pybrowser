@@ -1,7 +1,7 @@
-:py:mod:`pybrowser`
+:py:mod:`thatscrapper`
 ===================
 
-.. py:module:: pybrowser
+.. py:module:: thatscrapper
 
 
 Subpackages
@@ -32,8 +32,8 @@ Classes
 
 .. autoapisummary::
 
-   pybrowser.Crawler
-   pybrowser.Key
+   thatscrapper.Crawler
+   thatscrapper.Key
 
 
 
@@ -43,7 +43,7 @@ Attributes
 
 .. autoapisummary::
 
-   pybrowser.ATTR_SELECTOR
+   thatscrapper.ATTR_SELECTOR
 
 
 .. py:class:: Crawler(browser: str = 'firefox', headless: bool = False)

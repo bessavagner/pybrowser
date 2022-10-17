@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pybrowser &mdash; pybrowser  documentation</title>
+  <title>thatscrapper &mdash; thatscrapper  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="#" class="icon icon-home"> pybrowser
+            <a href="#" class="icon icon-home"> thatscrapper
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -54,7 +54,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">pybrowser</a>
+          <a href="#">thatscrapper</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -62,7 +62,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>pybrowser</li>
+      <li>thatscrapper</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -72,10 +72,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pybrowser">
-<h1>pybrowser<a class="headerlink" href="#pybrowser" title="Permalink to this heading"></a></h1>
+  <section id="thatscrapper">
+<h1>thatscrapper<a class="headerlink" href="#thatscrapper" title="Permalink to this heading"></a></h1>
 <p>Scrap more, write less.</p>
-<p><code class="docutils literal notranslate"><span class="pre">pybrowser</span></code> is a selenium adapter.</p>
+<p><code class="docutils literal notranslate"><span class="pre">thatscrapper</span></code> is a selenium adapter.</p>
 <blockquote>
 <div><p>Selenium automates browsers. That’s it! What you do with that power is entirely up to you.</p>
 </div></blockquote>
@@ -106,8 +106,8 @@
     <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>For a single purpose web scraping single script that means some couple of lines like that. However, for a larger testing or scraping project, that can become anoying. With using <code class="docutils literal notranslate"><span class="pre">pybrowser</span></code> above script becomes:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pybrowser</span> <span class="k">as</span> <span class="nn">pb</span>
+<p>For a single purpose web scraping single script that means some couple of lines like that. However, for a larger testing or scraping project, that can become anoying. With using <code class="docutils literal notranslate"><span class="pre">thatscrapper</span></code> above script becomes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">pb</span>
 
 <span class="n">crawler</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">Crawler</span><span class="p">()</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;http://somedomain/url_that_delays_loading&quot;</span><span class="p">)</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">element_id</span><span class="p">(</span><span class="s2">&quot;myDynamicElement&quot;</span><span class="p">)</span>
@@ -117,20 +117,20 @@
 <p>It is very important to quit the webdriver to avoid memory leakage or overcrowding. Always call <code class="docutils literal notranslate"><span class="pre">quit()</span></code> method when job is done . However, <code class="docutils literal notranslate"><span class="pre">Crawler</span></code> comes with a decorator that make sure the webdriver quits in case of any exception.</p>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pybrowser
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install thatscrapper
 </pre></div>
 </div>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pybrowser</span></code> can be used to perform basic actions on webpages, such as clicking buttons, dropdown menu, press keyboard keys, send text or filling forms. It is also suitable to extract data.</p>
-<p>Instances of <code class="docutils literal notranslate"><span class="pre">pybrowser.Crawler</span></code> are used to navigate pages, perform actions and select elements.</p>
+<p><code class="docutils literal notranslate"><span class="pre">thatscrapper</span></code> can be used to perform basic actions on webpages, such as clicking buttons, dropdown menu, press keyboard keys, send text or filling forms. It is also suitable to extract data.</p>
+<p>Instances of <code class="docutils literal notranslate"><span class="pre">thatscrapper.Crawler</span></code> are used to navigate pages, perform actions and select elements.</p>
 <section id="run-the-webdriver">
 <h3>Run the webdriver:<a class="headerlink" href="#run-the-webdriver" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pybrowser</span>
+<span class="kn">import</span> <span class="nn">thatscrapper</span>
 
-<span class="n">crawler</span> <span class="o">=</span> <span class="n">pybrowser</span><span class="o">.</span><span class="n">Crawler</span><span class="p">()</span>
+<span class="n">crawler</span> <span class="o">=</span> <span class="n">thatscrapper</span><span class="o">.</span><span class="n">Crawler</span><span class="p">()</span>
 <span class="c1"># open page</span>
 <span class="n">crawler</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://phptravels.com/demo/&quot;</span><span class="p">)</span>
 <span class="c1"># wait long enough so you can check the result</span>
@@ -140,14 +140,14 @@
 </pre></div>
 </div>
 <p>Alternatively, you can crawl pages withou opening browser graphics:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crawler</span> <span class="o">=</span> <span class="n">pybrowser</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">headless</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crawler</span> <span class="o">=</span> <span class="n">thatscrapper</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">headless</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 </pre></div>
 </div>
 </section>
 <section id="choosing-the-webdriver">
 <h3>Choosing the webdriver<a class="headerlink" href="#choosing-the-webdriver" title="Permalink to this heading"></a></h3>
-<p>By default <code class="docutils literal notranslate"><span class="pre">pybrowser</span></code> make use of FireFox webdriver (<a class="reference external" href="https://github.com/mozilla/geckodriver/releases">geckodriver</a>), however other drivers can be selected. But make sure you have the one of your choosing, and its <a class="reference external" href="https://selenium-python.readthedocs.io/installation.html#drivers">path is added to your enviroment variables</a>. For Linux users, download the werdriver and put it in /usr/bin or /usr/local/bin (windows user, <a class="reference external" href="https://stackoverflow.com/a/56926716/13599189">check this out</a> in order to see how to do that in your system).</p>
+<p>By default <code class="docutils literal notranslate"><span class="pre">thatscrapper</span></code> make use of FireFox webdriver (<a class="reference external" href="https://github.com/mozilla/geckodriver/releases">geckodriver</a>), however other drivers can be selected. But make sure you have the one of your choosing, and its <a class="reference external" href="https://selenium-python.readthedocs.io/installation.html#drivers">path is added to your enviroment variables</a>. For Linux users, download the werdriver and put it in /usr/bin or /usr/local/bin (windows user, <a class="reference external" href="https://stackoverflow.com/a/56926716/13599189">check this out</a> in order to see how to do that in your system).</p>
 <p>Here’s a list of suported browser drivers:</p>
 <table class="colwidths-auto docutils align-default">
 <thead>
@@ -172,7 +172,7 @@
 </table>
 <p>To use other driver, pass it’s browser name to <code class="docutils literal notranslate"><span class="pre">Crawler</span></code> class:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pybrowser</span> <span class="k">as</span> <span class="nn">pb</span>
+<span class="kn">import</span> <span class="nn">thatscrapper</span> <span class="k">as</span> <span class="nn">pb</span>
 
 <span class="n">crawler</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">Crawler</span><span class="p">(</span><span class="n">browser</span><span class="o">=</span><span class="s1">&#39;chrome&#39;</span><span class="p">)</span>
 
@@ -189,7 +189,7 @@
 <h3>Elements their children<a class="headerlink" href="#elements-their-children" title="Permalink to this heading"></a></h3>
 <p>Elements can be selected with one of four methods:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">element(value,</span> <span class="pre">by)</span></code>: selects an element based on given attribute <code class="docutils literal notranslate"><span class="pre">by</span></code>, with value <code class="docutils literal notranslate"><span class="pre">value</span></code>. A list of attributes is given by <code class="docutils literal notranslate"><span class="pre">pybrowser.ATTR_SELECTOR.keys()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">element(value,</span> <span class="pre">by)</span></code>: selects an element based on given attribute <code class="docutils literal notranslate"><span class="pre">by</span></code>, with value <code class="docutils literal notranslate"><span class="pre">value</span></code>. A list of attributes is given by <code class="docutils literal notranslate"><span class="pre">thatscrapper.ATTR_SELECTOR.keys()</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">elements(value,</span> <span class="pre">by)</span></code>: selects all elements based on given attribute <code class="docutils literal notranslate"><span class="pre">by</span></code>, with value <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">child_of(element,</span> <span class="pre">value,</span> <span class="pre">by)</span></code>: selects an element child of <code class="docutils literal notranslate"><span class="pre">element</span></code> (WebElement) based on given attribute <code class="docutils literal notranslate"><span class="pre">by</span></code>, with value <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">children_of</span></code>: selects all elements child of <code class="docutils literal notranslate"><span class="pre">element</span></code> based on given attribute <code class="docutils literal notranslate"><span class="pre">by</span></code>, with value <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p></li>
@@ -220,7 +220,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crawler</span><span class="o">.</span><span class="n">send_to_element</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;Vagner Bessa&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Sending keyboard keys works the same way. Check <code class="docutils literal notranslate"><span class="pre">pybrowser.Key</span></code> or <code class="docutils literal notranslate"><span class="pre">selenium.webdriver.common.keys.Keys</span></code> for valid keys.</p>
+<p>Sending keyboard keys works the same way. Check <code class="docutils literal notranslate"><span class="pre">thatscrapper.Key</span></code> or <code class="docutils literal notranslate"><span class="pre">selenium.webdriver.common.keys.Keys</span></code> for valid keys.</p>
 </section>
 </section>
 <section id="contributing">
@@ -238,11 +238,11 @@
 </section>
 <section id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pybrowser</span></code> was created by Vagner Bessa. It is licensed under the terms of the MIT license.</p>
+<p><code class="docutils literal notranslate"><span class="pre">thatscrapper</span></code> was created by Vagner Bessa. It is licensed under the terms of the MIT license.</p>
 </section>
 <section id="credits">
 <h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pybrowser</span></code> was created with <a class="reference external" href="https://cookiecutter.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">cookiecutter</span></code></a> and the <code class="docutils literal notranslate"><span class="pre">py-pkgs-cookiecutter</span></code> <a class="reference external" href="https://github.com/py-pkgs/py-pkgs-cookiecutter">template</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">thatscrapper</span></code> was created with <a class="reference external" href="https://cookiecutter.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">cookiecutter</span></code></a> and the <code class="docutils literal notranslate"><span class="pre">py-pkgs-cookiecutter</span></code> <a class="reference external" href="https://github.com/py-pkgs/py-pkgs-cookiecutter">template</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>

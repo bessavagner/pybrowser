@@ -1,7 +1,7 @@
-:py:mod:`pybrowser.common`
+:py:mod:`thatscrapper.common`
 ==========================
 
-.. py:module:: pybrowser.common
+.. py:module:: thatscrapper.common
 
 
 Submodules

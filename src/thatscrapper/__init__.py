@@ -1,6 +1,6 @@
 # read version from installed package
 from importlib.metadata import version
-__version__ = version("pybrowser")
+__version__ = version("thatscrapper")
 
 from .browser import Crawler
 from .browser import Key

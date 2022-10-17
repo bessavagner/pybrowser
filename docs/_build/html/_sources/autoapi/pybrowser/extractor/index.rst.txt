@@ -1,7 +1,7 @@
-:py:mod:`pybrowser.extractor`
+:py:mod:`thatscrapper.extractor`
 =============================
 
-.. py:module:: pybrowser.extractor
+.. py:module:: thatscrapper.extractor
 
 
 Module Contents
@@ -12,9 +12,9 @@ Classes
 
 .. autoapisummary::
 
-   pybrowser.extractor.Element
-   pybrowser.extractor.Table
-   pybrowser.extractor.UnorderedList
+   thatscrapper.extractor.Element
+   thatscrapper.extractor.Table
+   thatscrapper.extractor.UnorderedList
 
 
 
@@ -23,8 +23,8 @@ Functions
 
 .. autoapisummary::
 
-   pybrowser.extractor.download
-   pybrowser.extractor.html
+   thatscrapper.extractor.download
+   thatscrapper.extractor.html
 
 
 
@@ -33,7 +33,7 @@ Attributes
 
 .. autoapisummary::
 
-   pybrowser.extractor.WebElement
+   thatscrapper.extractor.WebElement
 
 
 .. py:data:: WebElement
@@ -41,13 +41,13 @@ Attributes
 
    
 
-.. py:class:: Element(crawler: pybrowser.browser.Crawler, value='table', by='tag name', **kwargs)
+.. py:class:: Element(crawler: thatscrapper.browser.Crawler, value='table', by='tag name', **kwargs)
 
    .. py:method:: html()
 
 
 
-.. py:class:: Table(crawler: pybrowser.browser.Crawler, value='table', by='tag name', **kwargs)
+.. py:class:: Table(crawler: thatscrapper.browser.Crawler, value='table', by='tag name', **kwargs)
 
    Bases: :py:obj:`Element`
 
@@ -58,7 +58,7 @@ Attributes
 
 
 
-.. py:class:: UnorderedList(crawler: pybrowser.browser.Crawler, value='div', by='tag name', **kwargs)
+.. py:class:: UnorderedList(crawler: thatscrapper.browser.Crawler, value='div', by='tag name', **kwargs)
 
    Bases: :py:obj:`Element`
 

@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=pybrowser
+set SPHINXPROJ=thatscrapper
 
 if "%1" == "" goto help
 

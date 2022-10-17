@@ -1,8 +1,8 @@
-# pybrowser
+# thatscrapper
 
 Scrap more, write less.
 
-`pybrowser` is a selenium adapter.
+`thatscrapper` is a selenium adapter.
 
 >Selenium automates browsers. That's it! What you do with that power is entirely up to you.
 
@@ -37,10 +37,10 @@ finally:
     driver.quit()
 ```
 
-For a single purpose web scraping single script that means some couple of lines like that. However, for a larger testing or scraping project, that can become anoying. With using `pybrowser` above script becomes:
+For a single purpose web scraping single script that means some couple of lines like that. However, for a larger testing or scraping project, that can become anoying. With using `thatscrapper` above script becomes:
 
 ```python
-import pybrowser as pb
+import thatscrapper as pb
 
 crawler = pb.Crawler().goto("http://somedomain/url_that_delays_loading")
 element = crawler.element_id("myDynamicElement")
@@ -53,14 +53,14 @@ It is very important to quit the webdriver to avoid memory leakage or overcrowdi
 ## Installation
 
 ```bash
-$ pip install pybrowser
+$ pip install thatscrapper
 ```
 
 ## Usage
 
-`pybrowser` can be used to perform basic actions on webpages, such as clicking buttons, dropdown menu, press keyboard keys, send text or filling forms. It is also suitable to extract data.
+`thatscrapper` can be used to perform basic actions on webpages, such as clicking buttons, dropdown menu, press keyboard keys, send text or filling forms. It is also suitable to extract data.
 
-Instances of `pybrowser.Crawler` are used to navigate pages, perform actions and select elements.
+Instances of `thatscrapper.Crawler` are used to navigate pages, perform actions and select elements.
 
 
 ### Run the webdriver:
@@ -68,9 +68,9 @@ Instances of `pybrowser.Crawler` are used to navigate pages, perform actions and
 
 ```python
 import time
-import pybrowser
+import thatscrapper
 
-crawler = pybrowser.Crawler()
+crawler = thatscrapper.Crawler()
 # open page
 crawler.goto("https://phptravels.com/demo/")
 # wait long enough so you can check the result
@@ -82,13 +82,13 @@ crawler.quit()
 Alternatively, you can crawl pages withou opening browser graphics:
 
 ```python
-crawler = pybrowser.Crawler(headless=True)
+crawler = thatscrapper.Crawler(headless=True)
 
 ```
 
 ### Choosing the webdriver
 
-By default `pybrowser` make use of FireFox webdriver ([geckodriver](https://github.com/mozilla/geckodriver/releases)), however other drivers can be selected. But make sure you have the one of your choosing, and its [path is added to your enviroment variables](https://selenium-python.readthedocs.io/installation.html#drivers). For Linux users, download the werdriver and put it in /usr/bin or /usr/local/bin (windows user, [check this out](https://stackoverflow.com/a/56926716/13599189) in order to see how to do that in your system).
+By default `thatscrapper` make use of FireFox webdriver ([geckodriver](https://github.com/mozilla/geckodriver/releases)), however other drivers can be selected. But make sure you have the one of your choosing, and its [path is added to your enviroment variables](https://selenium-python.readthedocs.io/installation.html#drivers). For Linux users, download the werdriver and put it in /usr/bin or /usr/local/bin (windows user, [check this out](https://stackoverflow.com/a/56926716/13599189) in order to see how to do that in your system).
 
 Here's a list of suported browser drivers:
 
@@ -103,7 +103,7 @@ To use other driver, pass it's browser name to ```Crawler``` class:
 
 ```python
 import time
-import pybrowser as pb
+import thatscrapper as pb
 
 crawler = pb.Crawler(browser='chrome')
 
@@ -119,7 +119,7 @@ crawler.quit()
 
 Elements can be selected with one of four methods:
 
-- `element(value, by)`: selects an element based on given attribute `by`, with value `value`. A list of attributes is given by `pybrowser.ATTR_SELECTOR.keys()`.
+- `element(value, by)`: selects an element based on given attribute `by`, with value `value`. A list of attributes is given by `thatscrapper.ATTR_SELECTOR.keys()`.
 - `elements(value, by)`: selects all elements based on given attribute `by`, with value `value`.
 - `child_of(element, value, by)`: selects an element child of `element` (WebElement) based on given attribute `by`, with value `value`.
 - `children_of`: selects all elements child of `element` based on given attribute `by`, with value `value`.
@@ -155,7 +155,7 @@ Consider the same abov section of a page, and the selected elements `field`. Sen
 crawler.send_to_element(fields[0], "Vagner Bessa")
 ```
 
-Sending keyboard keys works the same way. Check `pybrowser.Key` or `selenium.webdriver.common.keys.Keys` for valid keys.
+Sending keyboard keys works the same way. Check `thatscrapper.Key` or `selenium.webdriver.common.keys.Keys` for valid keys.
 
 ## Contributing
 
@@ -170,8 +170,8 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 
 ## License
 
-`pybrowser` was created by Vagner Bessa. It is licensed under the terms of the MIT license.
+`thatscrapper` was created by Vagner Bessa. It is licensed under the terms of the MIT license.
 
 ## Credits
 
-`pybrowser` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+`thatscrapper` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).

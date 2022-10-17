@@ -1,7 +1,7 @@
-:py:mod:`pybrowser.browser`
+:py:mod:`thatscrapper.browser`
 ===========================
 
-.. py:module:: pybrowser.browser
+.. py:module:: thatscrapper.browser
 
 
 Module Contents
@@ -12,8 +12,8 @@ Classes
 
 .. autoapisummary::
 
-   pybrowser.browser.Key
-   pybrowser.browser.Crawler
+   thatscrapper.browser.Key
+   thatscrapper.browser.Crawler
 
 
 
@@ -22,7 +22,7 @@ Functions
 
 .. autoapisummary::
 
-   pybrowser.browser.main
+   thatscrapper.browser.main
 
 
 
@@ -31,10 +31,10 @@ Attributes
 
 .. autoapisummary::
 
-   pybrowser.browser.WebElement
-   pybrowser.browser.WebDriver
-   pybrowser.browser.ATTR_SELECTOR
-   pybrowser.browser.webdrivers
+   thatscrapper.browser.WebElement
+   thatscrapper.browser.WebDriver
+   thatscrapper.browser.ATTR_SELECTOR
+   thatscrapper.browser.webdrivers
 
 
 .. py:data:: WebElement

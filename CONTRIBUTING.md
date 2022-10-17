@@ -40,10 +40,10 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `pybrowser` for local development.
+Ready to contribute? Here's how to set up `thatscrapper` for local development.
 
-1. Download a copy of `pybrowser` locally.
-2. Install `pybrowser` using `poetry`:
+1. Download a copy of `thatscrapper` locally.
+2. Install `thatscrapper` using `poetry`:
 
     ```console
     $ poetry install
@@ -69,5 +69,5 @@ Before you submit a pull request, check that it meets these guidelines:
 
 ## Code of Conduct
 
-Please note that the `pybrowser` project is released with a
+Please note that the `thatscrapper` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.

@@ -4,4 +4,4 @@
 
 ## v0.1.0 (09/10/2022)
 
-- First release of `pybrowser`!
+- First release of `thatscrapper`!

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pybrowser.common.exceptions &mdash; pybrowser  documentation</title>
+  <title>thatscrapper.common.exceptions &mdash; thatscrapper  documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
@@ -28,7 +28,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> pybrowser
+            <a href="../../../index.html" class="icon icon-home"> thatscrapper
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -52,7 +52,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">pybrowser</a>
+          <a href="../../../index.html">thatscrapper</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -61,7 +61,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>pybrowser.common.exceptions</li>
+      <li>thatscrapper.common.exceptions</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -70,11 +70,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for pybrowser.common.exceptions</h1><div class="highlight"><pre>
+  <h1>Source code for thatscrapper.common.exceptions</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">.logger</span> <span class="kn">import</span> <span class="n">log</span>
 
 
-<div class="viewcode-block" id="CrawlerError"><a class="viewcode-back" href="../../../autoapi/pybrowser/common/exceptions/index.html#pybrowser.common.exceptions.CrawlerError">[docs]</a><span class="k">class</span> <span class="nc">CrawlerError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="CrawlerError"><a class="viewcode-back" href="../../../autoapi/thatscrapper/common/exceptions/index.html#thatscrapper.common.exceptions.CrawlerError">[docs]</a><span class="k">class</span> <span class="nc">CrawlerError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Handle errors related to Windows objects</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -85,7 +85,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="CrawlerError.__str__"><a class="viewcode-back" href="../../../autoapi/pybrowser/common/exceptions/index.html#pybrowser.common.exceptions.CrawlerError.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+<div class="viewcode-block" id="CrawlerError.__str__"><a class="viewcode-back" href="../../../autoapi/thatscrapper/common/exceptions/index.html#thatscrapper.common.exceptions.CrawlerError.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Failed browsing.&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
