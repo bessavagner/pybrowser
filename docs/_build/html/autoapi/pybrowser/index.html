@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pybrowser &mdash; pybrowser  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="pybrowser.common" href="common/index.html" />
+    <link rel="prev" title="API Reference" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> pybrowser
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.common</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="browser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.browser</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="extractor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.extractor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pybrowser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autoapi/pybrowser/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pybrowser">
+<span id="pybrowser"></span><h1><a class="reference internal" href="#module-pybrowser" title="pybrowser"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser</span></code></a><a class="headerlink" href="#module-pybrowser" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.common</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common/exceptions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.common.exceptions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/logger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.common.logger</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="browser/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.browser</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.data</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="extractor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybrowser.extractor</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybrowser.Crawler" title="pybrowser.Crawler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Crawler</span></code></a></p></td>
+<td><p>A selenium.webdriver adapter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybrowser.Key" title="pybrowser.Key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Key</span></code></a></p></td>
+<td><p>Set of special keys codes.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybrowser.ATTR_SELECTOR" title="pybrowser.ATTR_SELECTOR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ATTR_SELECTOR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybrowser.Crawler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybrowser.</span></span><span class="sig-name descname"><span class="pre">Crawler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'firefox'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headless</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><p>A selenium.webdriver adapter.</p>
+</div></blockquote>
+<p>An instance of Window calss cam perform a series of automated
+actions on webpages. Designed to handle sites with heavy use of
+javascript.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybrowser.Crawler.driver">
+<span class="sig-name descname"><span class="pre">driver</span></span><a class="headerlink" href="#pybrowser.Crawler.driver" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>selenium.webdriver</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybrowser.Crawler.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><a class="headerlink" href="#pybrowser.Crawler.timeout" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">driver</span></span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybrowser.Crawler.logger">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#pybrowser.Crawler.logger" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.quitdriver">
+<span class="sig-name descname"><span class="pre">quitdriver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.quitdriver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.quitdriver" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.goto">
+<span class="sig-name descname"><span class="pre">goto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.goto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.goto" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.element">
+<span class="sig-name descname"><span class="pre">element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.element" title="Permalink to this definition"></a></dt>
+<dd><p>element method.</p>
+<p>Select and element from current page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>str</em>) – value of the attribute or tag defined in ‘by’</p></li>
+<li><p><strong>by</strong> (<em>str</em><em>, </em><em>optional</em>) – attribute, by default ‘name’.
+See a list of attributes at ATTR_SELECTOR.keys()</p></li>
+<li><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – timeout step, by default 0.5</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – timeout until throw error, by default 10</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Element retrieved.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>WebElement</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.element_id">
+<span class="sig-name descname"><span class="pre">element_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.element_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.element_id" title="Permalink to this definition"></a></dt>
+<dd><p>element_id</p>
+<p>Retrieve element from current page by it’s id value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>str</em>) – id’s value.</p></li>
+<li><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – timeout step, by default 0.5</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – timeout until throw error, by default 10</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Element retrieved.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>WebElement</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.elements">
+<span class="sig-name descname"><span class="pre">elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.elements" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.child_of">
+<span class="sig-name descname"><span class="pre">child_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.child_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.child_of" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.children_of">
+<span class="sig-name descname"><span class="pre">children_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.children_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.children_of" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.click_element">
+<span class="sig-name descname"><span class="pre">click_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.click_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.click_element" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.click">
+<span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.click"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.click" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.click_id">
+<span class="sig-name descname"><span class="pre">click_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.click_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.click_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.send_to_element">
+<span class="sig-name descname"><span class="pre">send_to_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WebElement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.send_to_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.send_to_element" title="Permalink to this definition"></a></dt>
+<dd><p>send_key similar to Window.send</p>
+<p>Send ‘key’ to WebElement ‘element’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<em>WebElement</em>) – Valid WebElement from selenium.</p></li>
+<li><p><strong>key</strong> (<em>Valid Selenium key</em><em> or </em><em>text.</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Element which key was sent to.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>WebElement</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.send">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.send" title="Permalink to this definition"></a></dt>
+<dd><p>send</p>
+<p>Send a valid ‘key’ to element with selector ‘by’ and
+corresponding ‘value’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>Valid Selenium key</em><em> or </em><em>text.</em>) – </p></li>
+<li><p><strong>value</strong> (<em>str</em>) – _description_</p></li>
+<li><p><strong>by</strong> (<em>str</em><em>, </em><em>optional</em>) – _description_, by default ‘name’</p></li>
+<li><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – timeout step, by default 0.5</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – timeout until throw error, by default 10</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Element which key was sent to.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>WebElement</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.arrow_down_element">
+<span class="sig-name descname"><span class="pre">arrow_down_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.arrow_down_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.arrow_down_element" title="Permalink to this definition"></a></dt>
+<dd><p>arrow_down</p>
+<p>Press keyboard arrow down n_times at
+element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<em>WebElement</em>) – Valid WebElement from selenium</p></li>
+<li><p><strong>n_times</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of times pressing down key, by default 1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.arrow_down">
+<span class="sig-name descname"><span class="pre">arrow_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.arrow_down"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.arrow_down" title="Permalink to this definition"></a></dt>
+<dd><p>arrow_down</p>
+<p>Select element by given selector ‘by’ and
+corresponding value, then send keyboard
+arrow down n_times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>str</em>) – value of the selected attributes</p></li>
+<li><p><strong>by</strong> (<em>str</em><em>, </em><em>optional</em>) – attribute, by default “name”</p></li>
+<li><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – timeout setp, by default 0.5</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – timeout, by default 10</p></li>
+<li><p><strong>n_times</strong> (<em>int</em><em>, </em><em>optional</em>) – times of pressing arrow up, by default 1</p></li>
+<li><p><strong>enter</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, ‘enter’ key is sent to element, by default False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.arrow_up_element">
+<span class="sig-name descname"><span class="pre">arrow_up_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.arrow_up_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.arrow_up_element" title="Permalink to this definition"></a></dt>
+<dd><p>arrow_down</p>
+<p>Presse keyboard arrow up n_times</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<em>WebElement</em>) – Valid WebElement from selenium</p></li>
+<li><p><strong>n_times</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of times pressing down key, by default 1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.arrow_up">
+<span class="sig-name descname"><span class="pre">arrow_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.arrow_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.arrow_up" title="Permalink to this definition"></a></dt>
+<dd><p>arrow_up</p>
+<p>Select element by given selector ‘by’ and
+corresponding value, then send keyboard
+arrow up n_times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>str</em>) – value of the selected attributes</p></li>
+<li><p><strong>by</strong> (<em>str</em><em>, </em><em>optional</em>) – attribute, by default “name”</p></li>
+<li><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – timeout setp, by default 0.5</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – timeout, by default 10</p></li>
+<li><p><strong>n_times</strong> (<em>int</em><em>, </em><em>optional</em>) – times of pressing arrow up, by default 1</p></li>
+<li><p><strong>enter</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, ‘enter’ key is sent to element, by default False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.get_items">
+<span class="sig-name descname"><span class="pre">get_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">click</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.get_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.get_items" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.scroll_page">
+<span class="sig-name descname"><span class="pre">scroll_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.scroll_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.scroll_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.google">
+<span class="sig-name descname"><span class="pre">google</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.google"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.google" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.source">
+<span class="sig-name descname"><span class="pre">source</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.source" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.close" title="Permalink to this definition"></a></dt>
+<dd><p>Closes the current window.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybrowser.Crawler.quit">
+<span class="sig-name descname"><span class="pre">quit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Crawler.quit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Crawler.quit" title="Permalink to this definition"></a></dt>
+<dd><p>Quits the driver and close every associated window.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybrowser.Key">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybrowser.</span></span><span class="sig-name descname"><span class="pre">Key</span></span><a class="reference internal" href="../../_modules/pybrowser/browser.html#Key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybrowser.Key" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">selenium.webdriver.common.keys.Keys</span></code></p>
+<p>Set of special keys codes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybrowser.Key.enter">
+<span class="sig-name descname"><span class="pre">enter</span></span><a class="headerlink" href="#pybrowser.Key.enter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybrowser.Key.esc">
+<span class="sig-name descname"><span class="pre">esc</span></span><a class="headerlink" href="#pybrowser.Key.esc" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybrowser.Key.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><a class="headerlink" href="#pybrowser.Key.delete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybrowser.Key.down">
+<span class="sig-name descname"><span class="pre">down</span></span><a class="headerlink" href="#pybrowser.Key.down" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybrowser.Key.up">
+<span class="sig-name descname"><span class="pre">up</span></span><a class="headerlink" href="#pybrowser.Key.up" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybrowser.Key.tab">
+<span class="sig-name descname"><span class="pre">tab</span></span><a class="headerlink" href="#pybrowser.Key.tab" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pybrowser.ATTR_SELECTOR">
+<span class="sig-prename descclassname"><span class="pre">pybrowser.</span></span><span class="sig-name descname"><span class="pre">ATTR_SELECTOR</span></span><a class="headerlink" href="#pybrowser.ATTR_SELECTOR" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="common/index.html" class="btn btn-neutral float-right" title="pybrowser.common" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vagner Bessa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

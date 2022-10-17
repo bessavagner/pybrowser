@@ -1,0 +1,91 @@
+:py:mod:`pybrowser.data`
+========================
+
+.. py:module:: pybrowser.data
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pybrowser.data.BrowserCleaner
+   pybrowser.data.FirefoxCleaner
+   pybrowser.data.ChromeCleaner
+   pybrowser.data.EdgeCleaner
+   pybrowser.data.SafariCleaner
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pybrowser.data.WebElement
+   pybrowser.data.Cleaner
+
+
+.. py:data:: WebElement
+   
+
+   
+
+.. py:class:: BrowserCleaner(headless=True)
+
+    Browser cache and history cleaner
+
+   Base class for a browser cleaning
+
+   .. py:method:: get_shadow(element: WebElement)
+
+
+
+.. py:class:: FirefoxCleaner(headless=True, settings='about:preferences#privacy')
+
+   Bases: :py:obj:`BrowserCleaner`
+
+    Browser cache and history cleaner
+
+   Base class for a browser cleaning
+
+   .. py:method:: clear_data(timeout=10)
+
+
+
+.. py:class:: ChromeCleaner(headless=True, settings='chrome://settings/privacy')
+
+   Bases: :py:obj:`BrowserCleaner`
+
+    Browser cache and history cleaner
+
+   Base class for a browser cleaning
+
+
+.. py:class:: EdgeCleaner(headless=True, settings='chrome://settings/privacy')
+
+   Bases: :py:obj:`BrowserCleaner`
+
+    Browser cache and history cleaner
+
+   Base class for a browser cleaning
+
+
+.. py:class:: SafariCleaner(headless=True, settings='chrome://settings/privacy')
+
+   Bases: :py:obj:`BrowserCleaner`
+
+    Browser cache and history cleaner
+
+   Base class for a browser cleaning
+
+
+.. py:data:: Cleaner
+   
+
+   
+

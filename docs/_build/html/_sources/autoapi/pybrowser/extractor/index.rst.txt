@@ -1,0 +1,86 @@
+:py:mod:`pybrowser.extractor`
+=============================
+
+.. py:module:: pybrowser.extractor
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pybrowser.extractor.Element
+   pybrowser.extractor.Table
+   pybrowser.extractor.UnorderedList
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pybrowser.extractor.download
+   pybrowser.extractor.html
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pybrowser.extractor.WebElement
+
+
+.. py:data:: WebElement
+   
+
+   
+
+.. py:class:: Element(crawler: pybrowser.browser.Crawler, value='table', by='tag name', **kwargs)
+
+   .. py:method:: html()
+
+
+
+.. py:class:: Table(crawler: pybrowser.browser.Crawler, value='table', by='tag name', **kwargs)
+
+   Bases: :py:obj:`Element`
+
+   .. py:property:: raw
+
+
+   .. py:property:: data
+
+
+
+.. py:class:: UnorderedList(crawler: pybrowser.browser.Crawler, value='div', by='tag name', **kwargs)
+
+   Bases: :py:obj:`Element`
+
+   .. py:property:: parent
+
+
+   .. py:property:: ul
+
+
+   .. py:property:: items
+
+
+   .. py:method:: __getitem__(idx: int)
+
+
+   .. py:method:: __len__()
+
+
+
+.. py:function:: download(link: str, file_name)
+
+
+.. py:function:: html(element: WebElement)
+
+
