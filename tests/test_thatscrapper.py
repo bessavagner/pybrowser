@@ -1,9 +1,9 @@
 import unittest
-import pybrowser
-from pybrowser import Crawler
-from pybrowser.browser import WebElement
-from pybrowser.browser import webdrivers
-from pybrowser.common.exceptions import CrawlerError
+import thatscrapper
+from thatscrapper import Crawler
+from thatscrapper.browser import WebElement
+from thatscrapper.browser import webdrivers
+from thatscrapper.common.exceptions import CrawlerError
 
 
 class TestWindow(unittest.TestCase):
@@ -15,7 +15,7 @@ class TestWindow(unittest.TestCase):
 
     def test_valid_browser(self, ):
         crawler = Crawler(headless=True)
-        webdrivers_list = list(pybrowser.browser.webdrivers.keys())
+        webdrivers_list = list(thatscrapper.browser.webdrivers.keys())
         message = f"Expected valid browser: {list(webdrivers.keys())}"
         assert crawler.driver.name in webdrivers_list, message
         crawler.quit()

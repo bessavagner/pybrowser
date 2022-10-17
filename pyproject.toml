@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pybrowser"
+name = "thatscrapper"
 version = "0.0.1"
 description = "A selenium framework for automated actions on browsers"
 authors = ["Vagner Bessa"]
@@ -11,6 +11,7 @@ python = "^3.9"
 selenium = "^4.5.0"
 pandas = "^1.5.0"
 lxml = "^4.9.1"
+polling2 = "^0.5.0"
 
 [tool.poetry.dev-dependencies]
 
@@ -20,6 +21,8 @@ pytest-cov = "^4.0.0"
 myst-nb = {version = "^0.17.1", python = "^3.9"}
 sphinx-autoapi = "^2.0.0"
 sphinx-rtd-theme = "^1.0.0"
+jupyter = "^1.0.0"
+nbsphinx = {version = "^0.8.9", python = "^3.9"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

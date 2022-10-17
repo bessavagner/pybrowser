@@ -40,9 +40,9 @@ finally:
 For a single purpose web scraping single script that means some couple of lines like that. However, for a larger testing or scraping project, that can become anoying. With using `thatscrapper` above script becomes:
 
 ```python
-import thatscrapper as pb
+import thatscrapper as ts
 
-crawler = pb.Crawler().goto("http://somedomain/url_that_delays_loading")
+crawler = ts.Crawler().goto("http://somedomain/url_that_delays_loading")
 element = crawler.element_id("myDynamicElement")
 crawler.quit()
 ```
@@ -103,9 +103,9 @@ To use other driver, pass it's browser name to ```Crawler``` class:
 
 ```python
 import time
-import thatscrapper as pb
+import thatscrapper as ts
 
-crawler = pb.Crawler(browser='chrome')
+crawler = ts.Crawler(browser='chrome')
 
 # extract data from
 crawler.goto("https://www.techlistic.com/p/demo-selenium-practice.html")
