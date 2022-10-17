@@ -1,0 +1,22 @@
+:py:mod:`thatscrapper.common.logger`
+====================================
+
+.. py:module:: thatscrapper.common.logger
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   thatscrapper.common.logger.log
+
+
+
+.. py:function:: log(name)
+
+
