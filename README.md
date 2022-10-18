@@ -2,6 +2,8 @@
 
 Scrap more, write less.
 
+![demonstration](thatscraper.gif)
+
 `thatscraper` is a selenium adapter.
 
 >Selenium automates browsers. That's it! What you do with that power is entirely up to you.

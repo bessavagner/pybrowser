@@ -191,28 +191,8 @@
                 "    img_filename = result[0].split('/')[-1]\n",
                 "    files.append(img_filename)\n",
                 "    ts.extractor.download(img_url, img_filename)\n",
-                "crawler.quit()"
-            ]
-        },
-        {
-            "cell_type": "code",
-            "execution_count": 10,
-            "metadata": {},
-            "outputs": [
-                {
-                    "data": {
-                        "text/html": [
-                            "<img src='kitty-cat-kitten-pet-45201.jpeg' style='display:inline;margin:1px;width:100px;'/><img src='pexels-photo-320014.jpeg' style='display:inline;margin:1px;width:100px;'/><img src='cat-sweet-kitty-animals-57416.jpeg' style='display:inline;margin:1px;width:100px;'/><img src='pexels-photo.jpg' style='display:inline;margin:1px;width:100px;'/><img src='pexels-photo-1056251.jpeg' style='display:inline;margin:1px;width:100px;'/><img src='pexels-photo-774731.jpeg' style='display:inline;margin:1px;width:100px;'/>"
-                        ],
-                        "text/plain": [
-                            "<IPython.core.display.HTML object>"
-                        ]
-                    },
-                    "metadata": {},
-                    "output_type": "display_data"
-                }
-            ],
-            "source": [
+                "crawler.quit()\n",
+                "\n",
                 "# just for you to check out the result:\n",
                 "from IPython.display import display\n",
                 "from IPython.core.display import HTML\n",
@@ -289,7 +269,7 @@
         },
         "vscode": {
             "interpreter": {
-                "hash": "4f9dd33510354be7108ea26c4ef0a558955b2ee3daf0a742d3fe1b5f51c20a4e"
+                "hash": "45f5eace5233fe4798a8204e9c7b50a33230de2c947354d5c069fec27b8fa1d9"
             }
         }
     },
