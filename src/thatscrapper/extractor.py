@@ -67,12 +67,14 @@ class UnorderedList(Element):
     def __len__(self,):
         return len(self.__items)
 
-
 def download(link: str, file_name):
     response = requests.get(link.strip())
     with open(file_name, 'wb') as file:
         file.write(response.content)
 
 
-def html(element: WebElement):
-    return element.get_attribute('outerHTML')
+def html(element: WebElement, outer=True):
+    if outer:
+        return element.get_attribute('outerHTML')
+    else:
+        return element.get_attribute('innerHTML')

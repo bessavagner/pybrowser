@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/dev_ipynb/test.py", line 18, in <module>
+    raise err
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/dev_ipynb/test.py", line 13, in <module>
+    crawler.click_element(anchors[0])
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/src/thatscrapper/browser.py", line 143, in inner
+    raise err  # 2
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/src/thatscrapper/browser.py", line 136, in inner
+    return method(self, *args, **kwargs)
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/src/thatscrapper/browser.py", line 244, in click_element
+    wait.until(EC.element_to_be_clickable(element)).click()
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/.py39/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 88, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/.py39/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 396, in _execute
+    return self._parent.execute(command, params)
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/.py39/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+  File "/home/bessa/Dropbox/PROJETOS/em_curso/thatscrapper/.py39/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 243, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: Element <a class="header-v2__nav2-item j-header-nav2-item" href="https://br.shein.com/new/WHATS-NEW-sc-00255950.html?ici=br_tab01navbar01&scici=navbar_WomenHomePage~~tab01navbar01~~1~~webLink~~~~0&src_module=topcat&src_tab_page_id=page_home1666101722537&src_identifier=fc%3DWomen%60sc%3DNOVIDADES%60tc%3D0%60oc%3D0%60ps%3Dtab01navbar01%60jc%3Durl_https%253A%252F%252Fbr.shein.com%252Fnew%252FWHATS-NEW-sc-00255950.html&srctype=category&userpath=category-NOVIDADES"> is not clickable at point (71,145) because another element <div class="c-modal"> obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.jsm:12:1
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.jsm:192:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.jsm:291:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.js:166:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.js:125:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.jsm:204:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.jsm:92:31
+

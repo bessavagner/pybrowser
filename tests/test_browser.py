@@ -3,10 +3,11 @@ import thatscrapper
 from thatscrapper import Crawler
 from thatscrapper.browser import WebElement
 from thatscrapper.browser import webdrivers
+from urllib3.exceptions import MaxRetryError
 from thatscrapper.common.exceptions import CrawlerError
 
 
-class TestWindow(unittest.TestCase):
+class TestCrawler(unittest.TestCase):
 
     def test_unsuported_browser(self,):
         with self.assertRaises(CrawlerError):
@@ -64,8 +65,17 @@ class TestWindow(unittest.TestCase):
         crawler.goto("http://the-internet.herokuapp.com/dropdown")
         assert crawler.click("dropdown", "id"), "Expected click"
 
-    def click_element(self,):
+    def test_click_element(self,):
         crawler = Crawler(headless=True)
         crawler.goto("http://the-internet.herokuapp.com/dropdown")
         dropdown_menu = crawler.element("dropdown", "id")
-        assert crawler.click_element(dropdown_menu), "Expected click."
+        clicked = crawler.click_element(dropdown_menu)
+        assert dropdown_menu == clicked, "Expected click."
+
+    def test_driver_quit(self,):
+        with self.assertRaises(MaxRetryError):
+            crawler = Crawler(headless=True)
+            crawler.goto("https://google.com")
+            crawler.driver.current_url
+            crawler.quit()
+            crawler.driver.current_url

@@ -1,3 +1,4 @@
+import os
 import sys
 import time
 import polling2
@@ -48,7 +49,6 @@ ATTR_SELECTOR = {
     "css selector": By.CSS_SELECTOR,
     "partial link text": By.PARTIAL_LINK_TEXT,
 }
-
 
 # wedrivers suported by selenium
 # see https://selenium-python.readthedocs.io/installation.html#drivers
@@ -115,6 +115,7 @@ class Crawler:
         self.timeout = 50
         try:
             self.__options = webdrivers[browser]["options"]
+            self.__download_dir(os.getcwd())
             if headless:
                 self.__options.headless = True
             driver = webdrivers[browser]["webdriver"]
@@ -143,6 +144,15 @@ class Crawler:
                 raise err  # 2
         return inner
 
+    def __download_dir(self, path):
+        if self.__browser == "firefox":
+            self.__options.set_preference("browser.download.folderList", 2)
+            self.__options.set_preference("browser.download.dir", rf"{path}")
+        elif  self.__browser == "chrome":
+            self.__options.add_experimental_option("prefs", {
+                "download.default_directory": rf"{path}"
+            })
+
     @property
     def driver(self,):
         return self.__driver
@@ -155,6 +165,10 @@ class Crawler:
     def goto(self, url: str):
         self.driver.get(url)
         return self
+
+    @quitdriver
+    def half_left_window(self,):
+        self.driver.set_window_rect(x=0, y=0, width=960, height=960)
 
     @quitdriver
     def element(self, value, by="name", step=0.5, timeout=10):
@@ -241,8 +255,8 @@ class Crawler:
     @quitdriver
     def click_element(self, element):
         wait = WebDriverWait(self.driver, self.timeout)
-        wait.until(EC.visibility_of(element))
         wait.until(EC.element_to_be_clickable(element)).click()
+        return element
 
     @quitdriver
     def click(self, value, by="name", step=0.5, timeout=10):
