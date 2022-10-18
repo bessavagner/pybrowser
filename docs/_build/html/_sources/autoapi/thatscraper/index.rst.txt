@@ -1,0 +1,310 @@
+:py:mod:`thatscraper`
+=====================
+
+.. py:module:: thatscraper
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   common/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   browser/index.rst
+   data/index.rst
+   extractor/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   thatscraper.Crawler
+   thatscraper.Key
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   thatscraper.ATTR_SELECTOR
+
+
+.. py:class:: Crawler(browser: str = 'firefox', headless: bool = False)
+
+    A selenium.webdriver adapter.
+
+   An instance of Window calss cam perform a series of automated
+   actions on webpages. Designed to handle sites with heavy use of
+   javascript.
+
+   .. attribute:: driver
+
+
+
+      :type: selenium.webdriver
+
+   .. attribute:: timeout
+
+
+
+   .. py:property:: driver
+
+
+   .. py:property:: logger
+
+
+   .. py:method:: quitdriver()
+
+
+   .. py:method:: __download_dir(path)
+
+
+   .. py:method:: goto(url: str)
+
+
+   .. py:method:: half_left_window()
+
+
+   .. py:method:: element(value, by='name', step=0.5, timeout=10)
+
+      element method.
+
+      Select and element from current page.
+
+      :param value: value of the attribute or tag defined in 'by'
+      :type value: str
+      :param by: attribute, by default 'name'.
+                 See a list of attributes at ATTR_SELECTOR.keys()
+      :type by: str, optional
+      :param step: timeout step, by default 0.5
+      :type step: float, optional
+      :param timeout: timeout until throw error, by default 10
+      :type timeout: int, optional
+
+      :returns: Element retrieved.
+      :rtype: WebElement
+
+
+   .. py:method:: element_id(value, step=0.5, timeout=10)
+
+      element_id
+
+      Retrieve element from current page by it's id value.
+
+      :param value: id's value.
+      :type value: str
+      :param step: timeout step, by default 0.5
+      :type step: float, optional
+      :param timeout: timeout until throw error, by default 10
+      :type timeout: int, optional
+
+      :returns: Element retrieved.
+      :rtype: WebElement
+
+
+   .. py:method:: elements(value, by='name', step=0.5, timeout=10)
+
+
+   .. py:method:: child_of(element, value, by='name', step=0.5, timeout=10)
+
+
+   .. py:method:: children_of(element, value, by='name', step=0.5, timeout=10)
+
+
+   .. py:method:: click_element(element)
+
+
+   .. py:method:: click(value, by='name', step=0.5, timeout=10)
+
+
+   .. py:method:: click_id(id_value, step=0.5, timeout=10)
+
+
+   .. py:method:: send_to_element(element: WebElement, key, enter=False)
+
+      send_key similar to Window.send
+
+      Send 'key' to WebElement 'element'
+
+      :param element: Valid WebElement from selenium.
+      :type element: WebElement
+      :param key:
+      :type key: Valid Selenium key or text.
+
+      :returns: Element which key was sent to.
+      :rtype: WebElement
+
+
+   .. py:method:: send(key, value: str, by='name', enter=False, step=0.5, timeout=10)
+
+      send
+
+      Send a valid 'key' to element with selector 'by' and
+      corresponding 'value'.
+
+      :param key:
+      :type key: Valid Selenium key or text.
+      :param value: _description_
+      :type value: str
+      :param by: _description_, by default 'name'
+      :type by: str, optional
+      :param step: timeout step, by default 0.5
+      :type step: float, optional
+      :param timeout: timeout until throw error, by default 10
+      :type timeout: int, optional
+
+      :returns: Element which key was sent to.
+      :rtype: WebElement
+
+
+   .. py:method:: arrow_down_element(element, n_times: int = 1, enter=False)
+
+      arrow_down
+
+      Press keyboard arrow down n_times at
+      element.
+
+      :param element: Valid WebElement from selenium
+      :type element: WebElement
+      :param n_times: Number of times pressing down key, by default 1
+      :type n_times: int, optional
+
+
+   .. py:method:: arrow_down(value: str, by='name', step=0.5, timeout=10, n_times: int = 1, enter=False)
+
+      arrow_down
+
+      Select element by given selector 'by' and
+      corresponding value, then send keyboard
+      arrow down n_times.
+
+      :param value: value of the selected attributes
+      :type value: str
+      :param by: attribute, by default "name"
+      :type by: str, optional
+      :param step: timeout setp, by default 0.5
+      :type step: float, optional
+      :param timeout: timeout, by default 10
+      :type timeout: int, optional
+      :param n_times: times of pressing arrow up, by default 1
+      :type n_times: int, optional
+      :param enter: If True, 'enter' key is sent to element, by default False
+      :type enter: bool, optional
+
+
+   .. py:method:: arrow_up_element(element, n_times: int = 1, enter=False)
+
+      arrow_down
+
+      Presse keyboard arrow up n_times
+
+      :param element: Valid WebElement from selenium
+      :type element: WebElement
+      :param n_times: Number of times pressing down key, by default 1
+      :type n_times: int, optional
+
+
+   .. py:method:: arrow_up(value: str, by='name', step=0.5, timeout=10, n_times: int = 1, enter=False)
+
+      arrow_up
+
+      Select element by given selector 'by' and
+      corresponding value, then send keyboard
+      arrow up n_times.
+
+      :param value: value of the selected attributes
+      :type value: str
+      :param by: attribute, by default "name"
+      :type by: str, optional
+      :param step: timeout setp, by default 0.5
+      :type step: float, optional
+      :param timeout: timeout, by default 10
+      :type timeout: int, optional
+      :param n_times: times of pressing arrow up, by default 1
+      :type n_times: int, optional
+      :param enter: If True, 'enter' key is sent to element, by default False
+      :type enter: bool, optional
+
+
+   .. py:method:: get_items(parent, click=True)
+
+
+   .. py:method:: scroll_page()
+
+
+   .. py:method:: google(query, step=0.5, timeout=10)
+
+
+   .. py:method:: source()
+
+
+   .. py:method:: close()
+
+      Closes the current window.
+
+
+   .. py:method:: quit(clean=False)
+
+      Quits the driver and close every associated window.
+
+
+
+.. py:class:: Key
+
+   Bases: :py:obj:`selenium.webdriver.common.keys.Keys`
+
+   Set of special keys codes.
+
+   .. py:attribute:: enter
+      
+
+      
+
+   .. py:attribute:: esc
+      
+
+      
+
+   .. py:attribute:: delete
+      
+
+      
+
+   .. py:attribute:: down
+      
+
+      
+
+   .. py:attribute:: up
+      
+
+      
+
+   .. py:attribute:: tab
+      
+
+      
+
+
+.. py:data:: ATTR_SELECTOR
+   
+
+   
+
