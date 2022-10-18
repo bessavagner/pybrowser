@@ -6,7 +6,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u"thatscrapper"
+project = u"thatscraper"
 copyright = u"2022, Vagner Bessa"
 author = u"Vagner Bessa"
 

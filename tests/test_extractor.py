@@ -2,11 +2,11 @@ import os
 import pandas
 import unittest
 from PIL import Image
-from thatscrapper import Crawler
-from thatscrapper import extractor
-from thatscrapper.browser import WebElement
-from thatscrapper.browser import webdrivers
-from thatscrapper.common.exceptions import CrawlerError
+from thatscraper import Crawler
+from thatscraper import extractor
+from thatscraper.browser import WebElement
+from thatscraper.browser import webdrivers
+from thatscraper.common.exceptions import CrawlerError
 
 
 class TestExtractor(unittest.TestCase):

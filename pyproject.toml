@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "thatscrapper"
+name = "thatscraper"
 version = "0.1.0"
 description = "A selenium framework for automated actions on browsers"
 authors = ["Vagner Bessa"]

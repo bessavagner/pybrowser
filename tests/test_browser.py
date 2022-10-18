@@ -1,10 +1,10 @@
 import unittest
-import thatscrapper
-from thatscrapper import Crawler
-from thatscrapper.browser import WebElement
-from thatscrapper.browser import webdrivers
+import thatscraper
+from thatscraper import Crawler
+from thatscraper.browser import WebElement
+from thatscraper.browser import webdrivers
 from urllib3.exceptions import MaxRetryError
-from thatscrapper.common.exceptions import CrawlerError
+from thatscraper.common.exceptions import CrawlerError
 
 
 class TestCrawler(unittest.TestCase):
@@ -16,7 +16,7 @@ class TestCrawler(unittest.TestCase):
 
     def test_valid_browser(self, ):
         crawler = Crawler(headless=True)
-        webdrivers_list = list(thatscrapper.browser.webdrivers.keys())
+        webdrivers_list = list(thatscraper.browser.webdrivers.keys())
         message = f"Expected valid browser: {list(webdrivers.keys())}"
         assert crawler.driver.name in webdrivers_list, message
         crawler.quit()
