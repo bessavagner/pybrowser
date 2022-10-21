@@ -1,4 +1,5 @@
 # thatscraper
+[![Documentation Status](https://readthedocs.org/projects/thatscraper/badge/?version=latest)](https://thatscraper.readthedocs.io/en/latest/?badge=latest)
 
 Scrap more, write less.
 
