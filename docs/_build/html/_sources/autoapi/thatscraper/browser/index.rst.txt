@@ -102,16 +102,6 @@ Attributes
    actions on webpages. Designed to handle sites with heavy use of
    javascript.
 
-   .. attribute:: driver
-
-
-
-      :type: selenium.webdriver
-
-   .. attribute:: timeout
-
-
-
    .. py:property:: driver
 
 
