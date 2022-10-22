@@ -84,11 +84,6 @@ class Crawler:
     An instance of Window calss cam perform a series of automated
     actions on webpages. Designed to handle sites with heavy use of
     javascript.
-
-    Attributes
-    ----------
-    driver : selenium.webdriver
-    timeout:
     """
 
     def __init__(self,
