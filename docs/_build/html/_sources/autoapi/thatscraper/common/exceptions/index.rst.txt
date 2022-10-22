@@ -1,0 +1,22 @@
+:py:mod:`thatscraper.common.exceptions`
+=======================================
+
+.. py:module:: thatscraper.common.exceptions
+
+
+Module Contents
+---------------
+
+.. py:exception:: CrawlerError(*args: object)
+
+   Bases: :py:obj:`Exception`
+
+   Handle errors related to Windows objects
+
+
+   .. py:method:: __str__()
+
+      Return str(self).
+
+
+
