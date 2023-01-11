@@ -1,5 +1,5 @@
 # thatscraper
-[![Documentation Status](https://readthedocs.org/projects/thatscraper/badge/?version=latest)](https://thatscraper.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/thatscraper/badge/?version=latest)](https://thatscraper.readthedocs.io/en/latest/?badge=latest) ![](https://img.shields.io/github/license/bessavagner/thatscraper) ![](https://img.shields.io/pypi/pyversions/thatscraper)
 
 Scrap more, write less.
 
