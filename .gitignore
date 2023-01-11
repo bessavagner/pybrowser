@@ -8,7 +8,9 @@ __pycache__
 .py38
 .py39
 .venv
+.env
 dev_ipynb/
 
-# logs
+# logs and dev registry files
 *.log
+*.txt

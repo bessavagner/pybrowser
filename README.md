@@ -3,7 +3,7 @@
 
 Scrap more, write less.
 
-<!-- ![demonstration](thatscraper.gif) -->
+![demonstration](thatscraper.gif)
 
 `thatscraper` is a selenium adapter.
 

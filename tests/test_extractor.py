@@ -40,7 +40,7 @@ class TestExtractor(unittest.TestCase):
         os.remove(path)
 
     def test_table(self,):
-        crawler = Crawler(browser='chrome')
+        crawler = Crawler(browser='chrome', headless=True)
 
         crawler.goto("https://www.techlistic.com/p/demo-selenium-practice.html")
         pandas.core.frame.DataFrame
