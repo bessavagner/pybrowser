@@ -15,7 +15,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.service import Service as FirefoxService
 
+from webdriver_manager.firefox import GeckoDriverManager
 # error handling
 # from selenium.common.exceptions import NoSuchElementException
 
@@ -72,21 +74,27 @@ webdrivers = {
         "options": webdriver.firefox.options.Options(),
         # "profile": firefox_profile,
         "url": "https://github.com/mozilla/geckodriver/releases",
+        "kwargs": {
+            "service": FirefoxService(GeckoDriverManager().install())
+        }
     },
     "chrome": {
         "webdriver": webdriver.Chrome,
         "options": webdriver.chrome.options.Options(),
         "url": "https://chromedriver.chromium.org/downloads",
+        "kwargs" : {}
     },
     "safari": {
         "driver": webdriver.Safari,
         "options": webdriver.safari.options.Options(),
         "url": "https://webkit.org/blog/6900/webdriver-support-in-safari-10/",
+        "kwargs" : {}
     },
     "edge": {
         "driver": webdriver.Edge,
         "options": webdriver.edge.options.Options(),
         "url": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/",  # noqa E501
+        "kwargs" : {}
     },
 }
 
@@ -123,7 +131,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
             raise CrawlerError(message)
         self.__browser = browser
         self.__driver = None
-        self.__options = None
+        self.__options = Noneexecutable_path="."
         self.__logger = log(self.__class__.__name__)
         self.timeout = 50
         self.quit_on_failure = quit_on_failure
@@ -133,7 +141,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
             if headless:
                 self.__options.headless = True
             driver = webdrivers[browser]["webdriver"]
-            self.__driver = driver(options=self.__options, **kwargs)
+            self.__driver = driver(options=self.__options, **webdrivers[browser]["kwargs"])
         except WebDriverException as err:
             message = "You need to add the driver"
             message += f" for {browser} to your environment variables."
@@ -230,7 +238,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
         """
         wait = WebDriverWait(self.driver, self.timeout)
         element = wait.until(
-            EC.presence_of_element_located((ATTR_SELECTOR[by_attribue], value))
+            EC.presence_of_element_located((ATTR_SELECTOR[by_attribute], value))
         )
         return element
 
