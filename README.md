@@ -167,6 +167,7 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 ## TODOs
 
 - [ ] Fix loggers.
+- [ ] Remove unnecessary dependencies.
 - [ ] Test all methods (current coverage: 67%).
 - [ ] Implement data extraction modules and classes.  
 - [ ] Link or adapt to a database handler.

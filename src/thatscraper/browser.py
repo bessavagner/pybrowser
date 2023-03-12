@@ -15,9 +15,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.firefox.service import Service as FirefoxService
 
-from webdriver_manager.firefox import GeckoDriverManager
 # error handling
 # from selenium.common.exceptions import NoSuchElementException
 
@@ -73,28 +71,22 @@ webdrivers = {
         "webdriver": webdriver.Firefox,
         "options": webdriver.firefox.options.Options(),
         # "profile": firefox_profile,
-        "url": "https://github.com/mozilla/geckodriver/releases",
-        "kwargs": {
-            "service": FirefoxService(GeckoDriverManager().install())
-        }
+        "url": "https://github.com/mozilla/geckodriver/releases"
     },
     "chrome": {
         "webdriver": webdriver.Chrome,
         "options": webdriver.chrome.options.Options(),
-        "url": "https://chromedriver.chromium.org/downloads",
-        "kwargs" : {}
+        "url": "https://chromedriver.chromium.org/downloads"
     },
     "safari": {
         "driver": webdriver.Safari,
         "options": webdriver.safari.options.Options(),
-        "url": "https://webkit.org/blog/6900/webdriver-support-in-safari-10/",
-        "kwargs" : {}
+        "url": "https://webkit.org/blog/6900/webdriver-support-in-safari-10/"
     },
     "edge": {
         "driver": webdriver.Edge,
         "options": webdriver.edge.options.Options(),
         "url": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/",  # noqa E501
-        "kwargs" : {}
     },
 }
 
