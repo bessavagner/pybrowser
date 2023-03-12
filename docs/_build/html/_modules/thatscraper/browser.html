@@ -71,44 +71,58 @@
            <div itemprop="articleBody">
              
   <h1>Source code for thatscraper.browser</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span></span><span class="c1"># pylint: disable=import-error</span>
+<span class="sd">&quot;&quot;&quot;&quot;thatscraper&#39;s module to handle actions via Selenium&#39;s webdriver&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">polling2</span>
-<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="c1"># import polling2</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
 <span class="c1"># from selenium.webdriver import ActionChains</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
 <span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">WebDriverException</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+
+<span class="c1"># error handling</span>
+<span class="c1"># from selenium.common.exceptions import NoSuchElementException</span>
+
 <span class="c1"># from selenium.webdriver.firefox.firefox_profile import FirefoxProfile</span>
 
 <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">Cleaner</span>
 <span class="kn">from</span> <span class="nn">.common.logger</span> <span class="kn">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">.common.exceptions</span> <span class="kn">import</span> <span class="n">CrawlerError</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="c1"># typing</span>
 <span class="n">WebElement</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">webelement</span><span class="o">.</span><span class="n">WebElement</span>
-<span class="n">WebDriver</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span>
-    <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">,</span>
-    <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">,</span>
-    <span class="n">webdriver</span><span class="o">.</span><span class="n">Safari</span><span class="p">,</span>
-    <span class="n">webdriver</span><span class="o">.</span><span class="n">Edge</span>
-<span class="p">]</span>
+<span class="n">WebElements</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">WebElement</span><span class="p">]</span>
+<span class="n">WebDriver</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">,</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">,</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Safari</span><span class="p">,</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Edge</span><span class="p">]</span>
+<span class="n">Number</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
 
 
 <span class="c1"># lower casing</span>
-<div class="viewcode-block" id="Key"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Key">[docs]</a><span class="k">class</span> <span class="nc">Key</span><span class="p">(</span><span class="n">Keys</span><span class="p">):</span>
+<div class="viewcode-block" id="Key"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Key">[docs]</a><span class="k">class</span> <span class="nc">Key</span><span class="p">(</span><span class="n">Keys</span><span class="p">):</span>  <span class="c1"># pylint: disable=too-few-public-methods</span>
+    <span class="sd">&quot;&quot;&quot; &quot;keys to use in send functions&quot;&quot;&quot;</span>
+
     <span class="n">enter</span> <span class="o">=</span> <span class="n">Keys</span><span class="o">.</span><span class="n">RETURN</span>
     <span class="n">esc</span> <span class="o">=</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ESCAPE</span>
     <span class="n">delete</span> <span class="o">=</span> <span class="n">Keys</span><span class="o">.</span><span class="n">DELETE</span>
     <span class="n">down</span> <span class="o">=</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ARROW_DOWN</span>
     <span class="n">up</span> <span class="o">=</span> <span class="n">Keys</span><span class="o">.</span><span class="n">ARROW_UP</span>
-    <span class="n">tab</span> <span class="o">=</span> <span class="n">Keys</span><span class="o">.</span><span class="n">TAB</span></div>
+    <span class="n">tab</span> <span class="o">=</span> <span class="n">Keys</span><span class="o">.</span><span class="n">TAB</span>
+    <span class="n">backspace</span> <span class="o">=</span> <span class="n">Keys</span><span class="o">.</span><span class="n">BACK_SPACE</span></div>
+
+
+<span class="c1"># to run scripts</span>
+<div class="viewcode-block" id="document_query_selector"><a class="viewcode-back" href="../../autoapi/thatscraper/browser/index.html#thatscraper.browser.document_query_selector">[docs]</a><span class="k">def</span> <span class="nf">document_query_selector</span><span class="p">(</span><span class="n">selector</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; &quot;String to parse javascript code.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;document.querySelector(&quot;</span><span class="si">{</span><span class="n">selector</span><span class="si">}</span><span class="s1">&quot;)&#39;</span></div>
 
 
 <span class="c1"># used in arguments of WeElement selectors</span>
@@ -150,7 +164,7 @@
 <span class="p">}</span>
 
 
-<div class="viewcode-block" id="Crawler"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler">[docs]</a><span class="k">class</span> <span class="nc">Crawler</span><span class="p">:</span>
+<div class="viewcode-block" id="Crawler"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler">[docs]</a><span class="k">class</span> <span class="nc">Crawler</span><span class="p">:</span>  <span class="c1"># pylint: disable=too-many-public-methods</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     A selenium.webdriver adapter.</span>
 
@@ -159,9 +173,12 @@
 <span class="sd">    javascript.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">browser</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;firefox&quot;</span><span class="p">,</span>
-                 <span class="n">headless</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa E501</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">browser</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;firefox&quot;</span><span class="p">,</span>
+        <span class="n">headless</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">quit_on_failure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -171,7 +188,7 @@
 <span class="sd">            If True, driver will work without the</span>
 <span class="sd">            GUI&#39;s browser, by default False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">browser</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">webdrivers</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">browser</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">webdrivers</span><span class="p">:</span>
             <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Unsuported browser &#39;</span><span class="si">{</span><span class="n">browser</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
             <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot; List of suported ones: &quot;</span>
             <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">webdrivers</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span>
@@ -181,6 +198,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__options</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__logger</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quit_on_failure</span> <span class="o">=</span> <span class="n">quit_on_failure</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__options</span> <span class="o">=</span> <span class="n">webdrivers</span><span class="p">[</span><span class="n">browser</span><span class="p">][</span><span class="s2">&quot;options&quot;</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__download_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
@@ -194,83 +212,102 @@
             <span class="n">message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; You can download </span><span class="si">{</span><span class="n">browser</span><span class="si">}</span><span class="s2">&#39;s driver at: &quot;</span>
             <span class="n">message</span> <span class="o">+=</span> <span class="n">webdrivers</span><span class="p">[</span><span class="n">browser</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
             <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot;. See more in&quot;</span>
-            <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot; https://selenium-python.readthedocs.io/installation.html#drivers&quot;</span>  <span class="c1"># noqa E501</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot; https://selenium-python.readthedocs.io/&quot;</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot;installation.html#drivers&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Crawler.quitdriver"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.quitdriver">[docs]</a>    <span class="k">def</span> <span class="nf">quitdriver</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="Crawler.quitdriver"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.quitdriver">[docs]</a>    <span class="k">def</span> <span class="nf">quitdriver</span><span class="p">(</span><span class="n">method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>  <span class="c1"># pylint: disable=E0213</span>
+        <span class="sd">&quot;&quot;&quot; &quot;safe quit webdriver to avoid memory leakages&quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># pylint: disable=not-callable</span>
                 <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="c1"># which is better? 1 or 2</span>
                 <span class="c1"># traceback.print_exc()  # 1</span>
                 <span class="c1"># print(err)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quitting driver...&quot;</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">quit_on_failure</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quitting driver...&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
                 <span class="k">raise</span> <span class="n">err</span>  <span class="c1"># 2</span>
+
         <span class="k">return</span> <span class="n">inner</span></div>
 
     <span class="k">def</span> <span class="nf">__download_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__browser</span> <span class="o">==</span> <span class="s2">&quot;firefox&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s2">&quot;browser.download.folderList&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s2">&quot;browser.download.dir&quot;</span><span class="p">,</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">elif</span>  <span class="bp">self</span><span class="o">.</span><span class="n">__browser</span> <span class="o">==</span> <span class="s2">&quot;chrome&quot;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="o">.</span><span class="n">add_experimental_option</span><span class="p">(</span><span class="s2">&quot;prefs&quot;</span><span class="p">,</span> <span class="p">{</span>
-                <span class="s2">&quot;download.default_directory&quot;</span><span class="p">:</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">})</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">__browser</span> <span class="o">==</span> <span class="s2">&quot;chrome&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="o">.</span><span class="n">add_experimental_option</span><span class="p">(</span>
+                <span class="s2">&quot;prefs&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;download.default_directory&quot;</span><span class="p">:</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+            <span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">driver</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+    <span class="k">def</span> <span class="nf">driver</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; &quot;selenium webdriver&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__driver</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+    <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;logger&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logger</span>
 
 <div class="viewcode-block" id="Crawler.goto"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.goto">[docs]</a>    <span class="nd">@quitdriver</span>
     <span class="k">def</span> <span class="nf">goto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;open window at url&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="Crawler.half_left_window"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.half_left_window">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">half_left_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+    <span class="k">def</span> <span class="nf">half_left_window</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        half_left_window</span>
+
+<span class="sd">        Resize and shifts window to the left.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">set_window_rect</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">960</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">960</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crawler.element"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.element">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">by_attribue</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        element method.</span>
 
-<span class="sd">        Select and element from current page.</span>
+<span class="sd">        Selects an element by type of attribute defined with &#39;by&#39;,</span>
+<span class="sd">        with &#39;value&#39;, from current page. See `thatscraper.ATTR_SELECTOR`</span>
+<span class="sd">        for a list of attributes types.</span>
+
+<span class="sd">        If elements are na availiable yet,</span>
+<span class="sd">        the there will be an attempt every &#39;step&#39; seconds, unitl excceed the</span>
+<span class="sd">        total time &#39;timeout&#39; (in seconds).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        value : str</span>
-<span class="sd">            value of the attribute or tag defined in &#39;by&#39;</span>
-<span class="sd">        by : str, optional</span>
-<span class="sd">            attribute, by default &#39;name&#39;.</span>
-<span class="sd">            See a list of attributes at ATTR_SELECTOR.keys()</span>
-<span class="sd">        step : float, optional</span>
-<span class="sd">            timeout step, by default 0.5</span>
-<span class="sd">        timeout : int, optional</span>
-<span class="sd">            timeout until throw error, by default 10</span>
+<span class="sd">            attribute&#39;s value</span>
+<span class="sd">        by_attribute : str, optional</span>
+<span class="sd">            attribute type., by default &quot;id&quot;</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        WebElement</span>
 <span class="sd">            Element retrieved.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">element</span> <span class="o">=</span> <span class="n">polling2</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span>
-            <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">ATTR_SELECTOR</span><span class="p">[</span><span class="n">by</span><span class="p">],</span> <span class="n">value</span><span class="p">),</span>
-            <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span>
-            <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+        <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">ATTR_SELECTOR</span><span class="p">[</span><span class="n">by_attribue</span><span class="p">],</span> <span class="n">value</span><span class="p">))</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">element</span></div>
 
 <div class="viewcode-block" id="Crawler.element_id"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.element_id">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">element_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">element_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebElement</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        element_id</span>
 
@@ -281,60 +318,127 @@
 <span class="sd">        value : str</span>
 <span class="sd">            id&#39;s value.</span>
 
-<span class="sd">        step : float, optional</span>
-<span class="sd">            timeout step, by default 0.5</span>
-<span class="sd">        timeout : int, optional</span>
-<span class="sd">            timeout until throw error, by default 10</span>
-
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        WebElement</span>
 <span class="sd">            Element retrieved.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crawler.elements"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.elements">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">element</span> <span class="o">=</span> <span class="n">polling2</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span>
-            <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">ATTR_SELECTOR</span><span class="p">[</span><span class="n">by</span><span class="p">],</span> <span class="n">value</span><span class="p">),</span>
-            <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span>
-            <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">by_attribute</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebElements</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        elements</span>
+
+<span class="sd">        Selects elements by type of attribute defined with &#39;by&#39;,</span>
+<span class="sd">        with &#39;value&#39;, from current page. See `thatscraper.ATTR_SELECTOR`</span>
+<span class="sd">        for a list of attributes names.</span>
+
+<span class="sd">        If elements are na availiable yet,</span>
+<span class="sd">        the there will be an attempt every &#39;step&#39; seconds, unitl excceed the</span>
+<span class="sd">        total time &#39;timeout&#39; (in seconds).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : str</span>
+<span class="sd">            attribute&#39;s value</span>
+<span class="sd">        by_attribute : str, optional</span>
+<span class="sd">            attribute type, by default &quot;id&quot;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        WebElements</span>
+<span class="sd">            List with all elements selected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="n">EC</span><span class="o">.</span><span class="n">presence_of_all_elements_located</span><span class="p">((</span><span class="n">ATTR_SELECTOR</span><span class="p">[</span><span class="n">by_attribute</span><span class="p">],</span> <span class="n">value</span><span class="p">))</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">element</span></div>
+        <span class="k">return</span> <span class="n">elements</span></div>
 
 <div class="viewcode-block" id="Crawler.child_of"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.child_of">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">child_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">child</span> <span class="o">=</span> <span class="n">polling2</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span>
-            <span class="k">lambda</span><span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">ATTR_SELECTOR</span><span class="p">[</span><span class="n">by</span><span class="p">],</span> <span class="n">value</span><span class="p">),</span>
-            <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span>
-            <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">child_of</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">by_attribute</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebElement</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Selects child of `element`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        element : WebDriver</span>
+<span class="sd">            parent</span>
+<span class="sd">        value : str</span>
+<span class="sd">            Child&#39;s attribute&#39;s value.</span>
+<span class="sd">        by_attribute : str, optional</span>
+<span class="sd">            Attribute.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        WebElement</span>
+<span class="sd">            Child element.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">elem</span><span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">ATTR_SELECTOR</span><span class="p">[</span><span class="n">by_attribute</span><span class="p">],</span> <span class="n">value</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">child</span></div>
 
 <div class="viewcode-block" id="Crawler.children_of"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.children_of">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">children_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">children</span> <span class="o">=</span> <span class="n">polling2</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span>
-            <span class="k">lambda</span><span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">ATTR_SELECTOR</span><span class="p">[</span><span class="n">by</span><span class="p">],</span> <span class="n">value</span><span class="p">),</span>
-            <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span>
-            <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">children_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">by_attribute</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebElements</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Selects children of `element`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        element : WebDriver</span>
+<span class="sd">            parent</span>
+<span class="sd">        value : str</span>
+<span class="sd">            Children&#39;s attribute&#39;s value.</span>
+<span class="sd">        by_attribute : str, optional</span>
+<span class="sd">            Attribute.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[WebElement] = WebElements</span>
+<span class="sd">            Child element.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="n">children</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">eleme</span><span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">ATTR_SELECTOR</span><span class="p">[</span><span class="n">by_attribute</span><span class="p">],</span> <span class="n">value</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">children</span></div>
 
 <div class="viewcode-block" id="Crawler.click_element"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.click_element">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">click_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">click_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">WebElement</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebElement</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        click_element</span>
+
+<span class="sd">        Click a selected element.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        element : WebElement</span>
+<span class="sd">            Clickable (previously selected) element. If element</span>
+<span class="sd">            is not clickable, selenium raises InvalidSelectorException.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        WebElement</span>
+<span class="sd">            Clicked element (selenium web element).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
         <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">element</span><span class="p">))</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">element</span></div>
 
 <div class="viewcode-block" id="Crawler.click"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.click">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">elem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="n">by</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">by_attribute</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebElement</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot; &quot;click on element&quot;&quot;&quot;</span>
+        <span class="n">elem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">by_attribute</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">click_element</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">elem</span></div>
 
 <div class="viewcode-block" id="Crawler.click_id"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.click_id">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">click_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_value</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">id_value</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">click_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebElement</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot; &quot;quit element by id&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">id_value</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crawler.send_to_element"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.send_to_element">[docs]</a>    <span class="nd">@quitdriver</span>
     <span class="k">def</span> <span class="nf">send_to_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">WebElement</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -354,18 +458,14 @@
 <span class="sd">        WebElement</span>
 <span class="sd">            Element which key was sent to.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">element</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">element</span><span class="p">))</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">enter</span><span class="p">:</span>
-            <span class="n">element</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">enter</span><span class="p">)</span></div>
+            <span class="n">element</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">enter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">element</span></div>
 
 <div class="viewcode-block" id="Crawler.send"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.send">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-             <span class="n">key</span><span class="p">,</span>
-             <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-             <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
-             <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-             <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-             <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">by_attribute</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        send</span>
 
@@ -389,8 +489,8 @@
 <span class="sd">        WebElement</span>
 <span class="sd">            Element which key was sent to.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">elem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="n">by</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">send_to_element</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">enter</span><span class="p">)</span></div>
+        <span class="n">elem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">by_attribute</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">send_to_element</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">enter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crawler.arrow_down_element"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.arrow_down_element">[docs]</a>    <span class="nd">@quitdriver</span>
     <span class="k">def</span> <span class="nf">arrow_down_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">n_times</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -412,17 +512,17 @@
             <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">element</span><span class="p">))</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">down</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">enter</span><span class="p">:</span>
             <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
-            <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-                <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">enter</span><span class="p">)</span></div>
+            <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">element</span><span class="p">))</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">enter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">element</span></div>
 
 <div class="viewcode-block" id="Crawler.arrow_down"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.arrow_down">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">arrow_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-                   <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
-                   <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                   <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                   <span class="n">n_times</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-                   <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">arrow_down</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">by_attribute</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span>
+        <span class="n">n_times</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        arrow_down</span>
 
@@ -445,8 +545,8 @@
 <span class="sd">        enter : bool, optional</span>
 <span class="sd">            If True, &#39;enter&#39; key is sent to element, by default False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">arrow_down_element</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">enter</span><span class="p">)</span></div>
+        <span class="n">element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">by_attribute</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arrow_down_element</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">enter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crawler.arrow_up_element"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.arrow_up_element">[docs]</a>    <span class="nd">@quitdriver</span>
     <span class="k">def</span> <span class="nf">arrow_up_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">n_times</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -467,17 +567,16 @@
             <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">element</span><span class="p">))</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">up</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">enter</span><span class="p">:</span>
             <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
-            <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
-                <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">enter</span><span class="p">)</span></div>
+            <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">(</span><span class="n">element</span><span class="p">))</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">enter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crawler.arrow_up"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.arrow_up">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">arrow_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-                 <span class="n">by</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
-                 <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                 <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                 <span class="n">n_times</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-                 <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">arrow_up</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">by_attribute</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span>
+        <span class="n">n_times</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">enter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        arrow_up</span>
 
@@ -500,11 +599,41 @@
 <span class="sd">        enter : bool, optional</span>
 <span class="sd">            If True, &#39;enter&#39; key is sent to element, by default False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">by</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">by_attribute</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">arrow_up_element</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">enter</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Crawler.get_items"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.get_items">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">get_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">click</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Crawler.items_of"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.items_of">[docs]</a>    <span class="nd">@quitdriver</span>
+    <span class="k">def</span> <span class="nf">items_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">WebElement</span><span class="p">,</span> <span class="n">click</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebElements</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        items_of</span>
+
+<span class="sd">        Select li elements nested within &#39;parent&#39;. Syntax:</span>
+<span class="sd">        ```html</span>
+<span class="sd">        &lt;parent&gt;</span>
+<span class="sd">            &lt;ul&gt;</span>
+<span class="sd">                &lt;li&gt;&lt;/li&gt;</span>
+<span class="sd">                &lt;li&gt;&lt;/li&gt;</span>
+<span class="sd">                ...</span>
+<span class="sd">                &lt;li&gt;&lt;/li&gt;</span>
+<span class="sd">            &lt;/ul&gt;</span>
+<span class="sd">        &lt;/parent&gt;</span>
+<span class="sd">        ```</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        parent : WebElement</span>
+<span class="sd">            parent of ul element.</span>
+<span class="sd">        step : float, optional</span>
+<span class="sd">            Time between trial calls, by default 0.5</span>
+<span class="sd">        timeout : int, optional</span>
+<span class="sd">            Total Timeout, by default 10</span>
+<span class="sd">        click : bool, optional</span>
+<span class="sd">            Whether to click parent before and after, by default True</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        WebElements</span>
+<span class="sd">            List of li elements.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">click</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">click_element</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="n">ul_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">child_of</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s2">&quot;ul&quot;</span><span class="p">,</span> <span class="s2">&quot;tag name&quot;</span><span class="p">)</span>
@@ -513,26 +642,126 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">click_element</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">li_element</span></div>
 
+<div class="viewcode-block" id="Crawler.run_script"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.run_script">[docs]</a>    <span class="k">def</span> <span class="nf">run_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">script</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        run_script</span>
+
+<span class="sd">        Execute Javascript code given a string.</span>
+
+<span class="sd">        When interacting with log in forms or register,</span>
+<span class="sd">        prefer this method instead of `Crawler.send` or</span>
+<span class="sd">        `Crawler.send_to_element`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        script : str</span>
+<span class="sd">            Javascript code.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        unknown</span>
+<span class="sd">            Whatever JavaScript code returns.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">run</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="Crawler.query_selector"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.query_selector">[docs]</a>    <span class="k">def</span> <span class="nf">query_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;run document.querySelector()&quot;&quot;&quot;</span>
+        <span class="n">script</span> <span class="o">=</span> <span class="n">document_query_selector</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_script</span><span class="p">(</span><span class="n">script</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Crawler.value_to_selector"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.value_to_selector">[docs]</a>    <span class="k">def</span> <span class="nf">value_to_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        value_to_selector</span>
+
+<span class="sd">        Assing &#39;value&#39; to value attribute of the</span>
+<span class="sd">        first element found with &#39;selector&#39;.</span>
+
+<span class="sd">        When interacting with log in forms or register,</span>
+<span class="sd">        prefer this method instead of `Crawler.send` or</span>
+<span class="sd">        `Crawler.send_to_element`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        selector : str</span>
+<span class="sd">            Element selector.</span>
+<span class="sd">        value : str</span>
+<span class="sd">            Element&#39;s value. Equivalent to:</span>
+<span class="sd">                document.querySelector(selector).value=value</span>
+<span class="sd">            in JavaScript.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        unkown</span>
+<span class="sd">            Whatever JavaScript returns.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">script</span> <span class="o">=</span> <span class="n">document_query_selector</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+        <span class="n">script</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;.value=&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_script</span><span class="p">(</span><span class="n">script</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Crawler.to_selector"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.to_selector">[docs]</a>    <span class="k">def</span> <span class="nf">to_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        value_to_selector</span>
+
+<span class="sd">        Assing &#39;value&#39; to &#39;attribute&#39; of the</span>
+<span class="sd">        first element found with &#39;selector&#39;.</span>
+
+<span class="sd">        When interacting with log in forms or register,</span>
+<span class="sd">        prefer this method instead of `Crawler.send` or</span>
+<span class="sd">        `Crawler.send_to_element`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        selector : str</span>
+<span class="sd">            Element selector.</span>
+<span class="sd">        value : str</span>
+<span class="sd">            Element&#39;s value. Equivalent to:</span>
+<span class="sd">                document.querySelector(selector).value=value</span>
+<span class="sd">            in JavaScript.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        unkown</span>
+<span class="sd">            Whatever JavaScript returns.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">script</span> <span class="o">=</span> <span class="n">document_query_selector</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+        <span class="n">script</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;.</span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s1">=&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&quot;;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_script</span><span class="p">(</span><span class="n">script</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Crawler.scroll_page"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.scroll_page">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">scroll_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+    <span class="k">def</span> <span class="nf">scroll_page</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;scroll page 1 vh&quot;&quot;&quot;</span>
         <span class="n">body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="s2">&quot;tag name&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">send_to_element</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">Keys</span><span class="o">.</span><span class="n">PAGE_DOWN</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crawler.google"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.google">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">google</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">google</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;select anchors from Google search page&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://google.com&quot;</span><span class="p">)</span>
-        <span class="n">search_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="n">search_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
         <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
         <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Key</span><span class="o">.</span><span class="n">enter</span><span class="p">)</span>
         <span class="c1"># time.sleep(3)</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_element</span><span class="p">(</span><span class="s2">&quot;rso&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;rso&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crawler.source"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.source">[docs]</a>    <span class="nd">@quitdriver</span>
-    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot; &quot;source page&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">page_source</span></div>
 
-<div class="viewcode-block" id="Crawler.close"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+<div class="viewcode-block" id="Crawler.close"><a class="viewcode-back" href="../../autoapi/thatscraper/index.html#thatscraper.browser.Crawler.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Closes the current window.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
@@ -546,19 +775,8 @@
                 <span class="n">cleaner</span><span class="o">.</span><span class="n">clear_data</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Browser&#39;s data cleared.&quot;</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done!&quot;</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;Couldn&#39;t clean browser&#39;s data.&quot;</span><span class="p">)</span></div></div>
-
-
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../autoapi/thatscraper/browser/index.html#thatscraper.browser.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">crawler</span> <span class="o">=</span> <span class="n">Crawler</span><span class="p">()</span>
-    <span class="n">crawler</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://google.com&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">crawler</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span></div>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s2">&quot;Couldn&#39;t clean browser&#39;s data.&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

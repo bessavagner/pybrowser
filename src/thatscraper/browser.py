@@ -105,6 +105,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
         browser: str = "firefox",
         headless: bool = False,
         quit_on_failure: bool = True,
+        **kwargs
     ) -> None:
         """
         Parameters
@@ -116,8 +117,8 @@ class Crawler:  # pylint: disable=too-many-public-methods
             GUI's browser, by default False
         """
         if browser not in webdrivers:
-            message = f"Unsuported browser '{browser}'."
-            message += " List of suported ones: "
+            message = f"Unsupported browser '{browser}'."
+            message += " List of supported ones: "
             message += ", ".join(list(webdrivers.keys())) + "."
             raise CrawlerError(message)
         self.__browser = browser
@@ -132,7 +133,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
             if headless:
                 self.__options.headless = True
             driver = webdrivers[browser]["webdriver"]
-            self.__driver = driver(options=self.__options)
+            self.__driver = driver(options=self.__options, **kwargs)
         except WebDriverException as err:
             message = "You need to add the driver"
             message += f" for {browser} to your environment variables."
@@ -203,7 +204,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
         self.driver.set_window_rect(x=0, y=0, width=960, height=960)
 
     @quitdriver
-    def element(self, value: str, by_attribue: str = "id") -> list:
+    def element(self, value: str, by_attribute: str = "id") -> list:
         """
         element method.
 
@@ -282,6 +283,13 @@ class Crawler:  # pylint: disable=too-many-public-methods
             EC.presence_of_all_elements_located((ATTR_SELECTOR[by_attribute], value))
         )
         return elements
+
+    # @quitdriver
+    # def get_attribute(self, element, attribute):
+    #     wait = WebDriverWait(self.driver, self.timeout)
+    #     elements = wait.until(
+    #         EC.((ATTR_SELECTOR[by_attribute], value))
+    #     )
 
     @quitdriver
     def child_of(

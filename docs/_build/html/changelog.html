@@ -45,6 +45,7 @@
 <li class="toctree-l1"><a class="reference internal" href="example.html">Example usage</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-0-17-10-2022">v0.1.0 (17/10/2022)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-0-0">v1.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -83,6 +84,42 @@
 <h2>v0.1.0 (17/10/2022)<a class="headerlink" href="#v0-1-0-17-10-2022" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>First release of <code class="docutils literal notranslate"><span class="pre">thatscraper</span></code>!</p></li>
+</ul>
+</section>
+<section id="v1-0-0">
+<h2>v1.0.0<a class="headerlink" href="#v1-0-0" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Aditional docstrings.</p></li>
+<li><p>More type hints.</p></li>
+<li><p>Added:</p>
+<ul>
+<li><p>WeDriverWait as callbacks to pollin2.poll.</p></li>
+<li><p>WeDriverWait to ‘send’ like methods.</p></li>
+<li><p>more Keys.</p></li>
+<li><p>Apadtations to <code class="docutils literal notranslate"><span class="pre">webdriver.execute_script</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Crawler.run_script</span></code>: Execute Javascript code given a string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Crawler.query_selector</span></code>: Assing ‘value’ to value attribute of the
+first element found with ‘selector’.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Crawler.to_selector</span></code>: Assing ‘value’ to ‘attribute’ of the
+first element found with ‘selector’.</p></li>
+</ul>
+</li>
+<li><p>Attribute <code class="docutils literal notranslate"><span class="pre">quit_on_falure</span></code>: when set to False, when
+methods fails driver won’t quit. Can be set in constructor.</p></li>
+</ul>
+</li>
+<li><p>Changed:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Crawler.get_items</span></code> to <code class="docutils literal notranslate"><span class="pre">Crawler.items_of</span></code>.</p></li>
+<li><p>Replaced <code class="docutils literal notranslate"><span class="pre">polling2.poll</span></code> for <code class="docutils literal notranslate"><span class="pre">selenium.webdriver.support.ui.WebDriverWait</span></code> as wait method.</p></li>
+</ul>
+</li>
+<li><p>Removed dependencies:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">polling2</span></code>.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 </section>

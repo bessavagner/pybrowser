@@ -90,6 +90,7 @@
              
   <section id="module-thatscraper.browser">
 <span id="thatscraper-browser"></span><h1><a class="reference internal" href="#module-thatscraper.browser" title="thatscraper.browser"><code class="xref py py-mod docutils literal notranslate"><span class="pre">thatscraper.browser</span></code></a><a class="headerlink" href="#module-thatscraper.browser" title="Permalink to this heading"></a></h1>
+<p>“thatscraper’s module to handle actions via Selenium’s webdriver</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 <section id="classes">
@@ -101,7 +102,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#thatscraper.browser.Key" title="thatscraper.browser.Key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Key</span></code></a></p></td>
-<td><p>Set of special keys codes.</p></td>
+<td><p>&quot;keys to use in send functions</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#thatscraper.browser.Crawler" title="thatscraper.browser.Crawler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Crawler</span></code></a></p></td>
 <td><p>A selenium.webdriver adapter.</p></td>
@@ -117,8 +118,8 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#thatscraper.browser.main" title="thatscraper.browser.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#thatscraper.browser.document_query_selector" title="thatscraper.browser.document_query_selector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">document_query_selector</span></code></a>(selector)</p></td>
+<td><p>&quot;String to parse javascript code.</p></td>
 </tr>
 </tbody>
 </table>
@@ -134,7 +135,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#thatscraper.browser.WebElement" title="thatscraper.browser.WebElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebElement</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#thatscraper.browser.WebDriver" title="thatscraper.browser.WebDriver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebDriver</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#thatscraper.browser.WebElements" title="thatscraper.browser.WebElements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebElements</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#thatscraper.browser.WebDriver" title="thatscraper.browser.WebDriver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebDriver</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#thatscraper.browser.Number" title="thatscraper.browser.Number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Number</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#thatscraper.browser.ATTR_SELECTOR" title="thatscraper.browser.ATTR_SELECTOR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ATTR_SELECTOR</span></code></a></p></td>
@@ -151,15 +158,25 @@
 <dd></dd></dl>
 
 <dl class="py data">
+<dt class="sig sig-object py" id="thatscraper.browser.WebElements">
+<span class="sig-prename descclassname"><span class="pre">thatscraper.browser.</span></span><span class="sig-name descname"><span class="pre">WebElements</span></span><a class="headerlink" href="#thatscraper.browser.WebElements" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
 <dt class="sig sig-object py" id="thatscraper.browser.WebDriver">
 <span class="sig-prename descclassname"><span class="pre">thatscraper.browser.</span></span><span class="sig-name descname"><span class="pre">WebDriver</span></span><a class="headerlink" href="#thatscraper.browser.WebDriver" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="thatscraper.browser.Number">
+<span class="sig-prename descclassname"><span class="pre">thatscraper.browser.</span></span><span class="sig-name descname"><span class="pre">Number</span></span><a class="headerlink" href="#thatscraper.browser.Number" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="thatscraper.browser.Key">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thatscraper.browser.</span></span><span class="sig-name descname"><span class="pre">Key</span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Key" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">selenium.webdriver.common.keys.Keys</span></code></p>
-<p>Set of special keys codes.</p>
+<p>“keys to use in send functions</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="thatscraper.browser.Key.enter">
 <span class="sig-name descname"><span class="pre">enter</span></span><a class="headerlink" href="#thatscraper.browser.Key.enter" title="Permalink to this definition"></a></dt>
@@ -190,6 +207,17 @@
 <span class="sig-name descname"><span class="pre">tab</span></span><a class="headerlink" href="#thatscraper.browser.Key.tab" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="thatscraper.browser.Key.backspace">
+<span class="sig-name descname"><span class="pre">backspace</span></span><a class="headerlink" href="#thatscraper.browser.Key.backspace" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="thatscraper.browser.document_query_selector">
+<span class="sig-prename descclassname"><span class="pre">thatscraper.browser.</span></span><span class="sig-name descname"><span class="pre">document_query_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#document_query_selector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.document_query_selector" title="Permalink to this definition"></a></dt>
+<dd><p>“String to parse javascript code.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -204,7 +232,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thatscraper.browser.</span></span><span class="sig-name descname"><span class="pre">Crawler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'firefox'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headless</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thatscraper.browser.</span></span><span class="sig-name descname"><span class="pre">Crawler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'firefox'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headless</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quit_on_failure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler" title="Permalink to this definition"></a></dt>
 <dd><blockquote>
 <div><p>A selenium.webdriver adapter.</p>
 </div></blockquote>
@@ -214,17 +242,20 @@ javascript.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.driver">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">driver</span></span><a class="headerlink" href="#thatscraper.browser.Crawler.driver" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>“selenium webdriver</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.logger">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#thatscraper.browser.Crawler.logger" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>logger</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.quitdriver">
-<span class="sig-name descname"><span class="pre">quitdriver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.quitdriver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.quitdriver" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">quitdriver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.quitdriver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.quitdriver" title="Permalink to this definition"></a></dt>
+<dd><p>“safe quit webdriver to avoid memory leakages</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.__download_dir">
@@ -234,26 +265,31 @@ javascript.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.goto">
 <span class="sig-name descname"><span class="pre">goto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.goto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.goto" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>open window at url</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.half_left_window">
 <span class="sig-name descname"><span class="pre">half_left_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.half_left_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.half_left_window" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>half_left_window</p>
+<p>Resize and shifts window to the left.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.element">
-<span class="sig-name descname"><span class="pre">element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.element" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_attribue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.element" title="Permalink to this definition"></a></dt>
 <dd><p>element method.</p>
-<p>Select and element from current page.</p>
+<p>Selects an element by type of attribute defined with ‘by’,
+with ‘value’, from current page. See <cite>thatscraper.ATTR_SELECTOR</cite>
+for a list of attributes types.</p>
+<p>If elements are na availiable yet,
+the there will be an attempt every ‘step’ seconds, unitl excceed the
+total time ‘timeout’ (in seconds).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> (<em>str</em>) – value of the attribute or tag defined in ‘by’</p></li>
-<li><p><strong>by</strong> (<em>str</em><em>, </em><em>optional</em>) – attribute, by default ‘name’.
-See a list of attributes at ATTR_SELECTOR.keys()</p></li>
-<li><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – timeout step, by default 0.5</p></li>
-<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – timeout until throw error, by default 10</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – attribute’s value</p></li>
+<li><p><strong>by_attribute</strong> (<em>str</em><em>, </em><em>optional</em>) – attribute type., by default “id”</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -267,16 +303,12 @@ See a list of attributes at ATTR_SELECTOR.keys()</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.element_id">
-<span class="sig-name descname"><span class="pre">element_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.element_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.element_id" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">element_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebElement</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.element_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.element_id" title="Permalink to this definition"></a></dt>
 <dd><p>element_id</p>
 <p>Retrieve element from current page by it’s id value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> (<em>str</em>) – id’s value.</p></li>
-<li><p><strong>step</strong> (<em>float</em><em>, </em><em>optional</em>) – timeout step, by default 0.5</p></li>
-<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – timeout until throw error, by default 10</p></li>
-</ul>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – id’s value.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Element retrieved.</p>
@@ -289,33 +321,102 @@ See a list of attributes at ATTR_SELECTOR.keys()</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.elements">
-<span class="sig-name descname"><span class="pre">elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.elements" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebElements</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.elements" title="Permalink to this definition"></a></dt>
+<dd><p>elements</p>
+<p>Selects elements by type of attribute defined with ‘by’,
+with ‘value’, from current page. See <cite>thatscraper.ATTR_SELECTOR</cite>
+for a list of attributes names.</p>
+<p>If elements are na availiable yet,
+the there will be an attempt every ‘step’ seconds, unitl excceed the
+total time ‘timeout’ (in seconds).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>str</em>) – attribute’s value</p></li>
+<li><p><strong>by_attribute</strong> (<em>str</em><em>, </em><em>optional</em>) – attribute type, by default “id”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List with all elements selected.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>WebElements</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.child_of">
-<span class="sig-name descname"><span class="pre">child_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.child_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.child_of" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">child_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WebDriver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebElement</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.child_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.child_of" title="Permalink to this definition"></a></dt>
+<dd><p>Selects child of <cite>element</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<em>WebDriver</em>) – parent</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – Child’s attribute’s value.</p></li>
+<li><p><strong>by_attribute</strong> (<em>str</em><em>, </em><em>optional</em>) – Attribute.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Child element.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>WebElement</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.children_of">
-<span class="sig-name descname"><span class="pre">children_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.children_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.children_of" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">children_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebElements</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.children_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.children_of" title="Permalink to this definition"></a></dt>
+<dd><p>Selects children of <cite>element</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<em>WebDriver</em>) – parent</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – Children’s attribute’s value.</p></li>
+<li><p><strong>by_attribute</strong> (<em>str</em><em>, </em><em>optional</em>) – Attribute.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Child element.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[WebElement] = WebElements</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.click_element">
-<span class="sig-name descname"><span class="pre">click_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.click_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.click_element" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">click_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WebElement</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebElement</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.click_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.click_element" title="Permalink to this definition"></a></dt>
+<dd><p>click_element</p>
+<p>Click a selected element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>element</strong> (<em>WebElement</em>) – Clickable (previously selected) element. If element
+is not clickable, selenium raises InvalidSelectorException.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Clicked element (selenium web element).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>WebElement</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.click">
-<span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.click"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.click" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebElement</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.click"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.click" title="Permalink to this definition"></a></dt>
+<dd><p>“click on element</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.click_id">
-<span class="sig-name descname"><span class="pre">click_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.click_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.click_id" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">click_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebElement</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.click_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.click_id" title="Permalink to this definition"></a></dt>
+<dd><p>“quit element by id</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.send_to_element">
@@ -340,7 +441,7 @@ See a list of attributes at ATTR_SELECTOR.keys()</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.send">
-<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.send" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.send" title="Permalink to this definition"></a></dt>
 <dd><p>send</p>
 <p>Send a valid ‘key’ to element with selector ‘by’ and
 corresponding ‘value’.</p>
@@ -381,7 +482,7 @@ element.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.arrow_down">
-<span class="sig-name descname"><span class="pre">arrow_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.arrow_down"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.arrow_down" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">arrow_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.arrow_down"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.arrow_down" title="Permalink to this definition"></a></dt>
 <dd><p>arrow_down</p>
 <p>Select element by given selector ‘by’ and
 corresponding value, then send keyboard
@@ -417,7 +518,7 @@ arrow down n_times.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.arrow_up">
-<span class="sig-name descname"><span class="pre">arrow_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.arrow_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.arrow_up" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">arrow_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.arrow_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.arrow_up" title="Permalink to this definition"></a></dt>
 <dd><p>arrow_up</p>
 <p>Select element by given selector ‘by’ and
 corresponding value, then send keyboard
@@ -437,28 +538,150 @@ arrow up n_times.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="thatscraper.browser.Crawler.get_items">
-<span class="sig-name descname"><span class="pre">get_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">click</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.get_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.get_items" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="thatscraper.browser.Crawler.items_of">
+<span class="sig-name descname"><span class="pre">items_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WebElement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">click</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WebElements</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.items_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.items_of" title="Permalink to this definition"></a></dt>
+<dd><p>items_of</p>
+<p>Select li elements nested within ‘parent’. Syntax:
+<a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>html
+&lt;parent&gt;</p>
+<blockquote>
+<div><dl class="simple">
+<dt>&lt;ul&gt;</dt><dd><p>&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+…
+&lt;li&gt;&lt;/li&gt;</p>
+</dd>
+</dl>
+<p>&lt;/ul&gt;</p>
+</div></blockquote>
+<p>&lt;/parent&gt;
+<a href="#id5"><span class="problematic" id="id6">``</span></a>`
+:param parent: parent of ul element.
+:type parent: WebElement
+:param step: Time between trial calls, by default 0.5
+:type step: float, optional
+:param timeout: Total Timeout, by default 10
+:type timeout: int, optional
+:param click: Whether to click parent before and after, by default True
+:type click: bool, optional</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of li elements.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>WebElements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thatscraper.browser.Crawler.run_script">
+<span class="sig-name descname"><span class="pre">run_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.run_script"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.run_script" title="Permalink to this definition"></a></dt>
+<dd><p>run_script</p>
+<p>Execute Javascript code given a string.</p>
+<p>When interacting with log in forms or register,
+prefer this method instead of <cite>Crawler.send</cite> or
+<cite>Crawler.send_to_element</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – Javascript code.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whatever JavaScript code returns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>unknown</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thatscraper.browser.Crawler.query_selector">
+<span class="sig-name descname"><span class="pre">query_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.query_selector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.query_selector" title="Permalink to this definition"></a></dt>
+<dd><p>run document.querySelector()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thatscraper.browser.Crawler.value_to_selector">
+<span class="sig-name descname"><span class="pre">value_to_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.value_to_selector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.value_to_selector" title="Permalink to this definition"></a></dt>
+<dd><p>value_to_selector</p>
+<p>Assing ‘value’ to value attribute of the
+first element found with ‘selector’.</p>
+<p>When interacting with log in forms or register,
+prefer this method instead of <cite>Crawler.send</cite> or
+<cite>Crawler.send_to_element</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>selector</strong> (<em>str</em>) – Element selector.</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – <dl class="simple">
+<dt>Element’s value. Equivalent to:</dt><dd><p>document.querySelector(selector).value=value</p>
+</dd>
+</dl>
+<p>in JavaScript.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whatever JavaScript returns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>unkown</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thatscraper.browser.Crawler.to_selector">
+<span class="sig-name descname"><span class="pre">to_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.to_selector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.to_selector" title="Permalink to this definition"></a></dt>
+<dd><p>value_to_selector</p>
+<p>Assing ‘value’ to ‘attribute’ of the
+first element found with ‘selector’.</p>
+<p>When interacting with log in forms or register,
+prefer this method instead of <cite>Crawler.send</cite> or
+<cite>Crawler.send_to_element</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>selector</strong> (<em>str</em>) – Element selector.</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – <dl class="simple">
+<dt>Element’s value. Equivalent to:</dt><dd><p>document.querySelector(selector).value=value</p>
+</dd>
+</dl>
+<p>in JavaScript.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whatever JavaScript returns.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>unkown</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.scroll_page">
 <span class="sig-name descname"><span class="pre">scroll_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.scroll_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.scroll_page" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>scroll page 1 vh</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.google">
-<span class="sig-name descname"><span class="pre">google</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.google"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.google" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">google</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.google"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.google" title="Permalink to this definition"></a></dt>
+<dd><p>select anchors from Google search page</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.source">
-<span class="sig-name descname"><span class="pre">source</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.source" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">source</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.source" title="Permalink to this definition"></a></dt>
+<dd><p>“source page</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thatscraper.browser.Crawler.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.close" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#Crawler.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.Crawler.close" title="Permalink to this definition"></a></dt>
 <dd><p>Closes the current window.</p>
 </dd></dl>
 
@@ -469,11 +692,6 @@ arrow up n_times.</p>
 </dd></dl>
 
 </dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="thatscraper.browser.main">
-<span class="sig-prename descclassname"><span class="pre">thatscraper.browser.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/thatscraper/browser.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#thatscraper.browser.main" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 </section>
 </section>

@@ -46,7 +46,7 @@ Attributes
    thatscraper.ATTR_SELECTOR
 
 
-.. py:class:: Crawler(browser: str = 'firefox', headless: bool = False)
+.. py:class:: Crawler(browser: str = 'firefox', headless: bool = False, quit_on_failure: bool = True)
 
     A selenium.webdriver adapter.
 
@@ -56,11 +56,15 @@ Attributes
 
    .. py:property:: driver
 
+      "selenium webdriver
 
    .. py:property:: logger
 
+      logger
 
-   .. py:method:: quitdriver()
+   .. py:method:: quitdriver() -> Callable
+
+      "safe quit webdriver to avoid memory leakages
 
 
    .. py:method:: __download_dir(path)
@@ -68,31 +72,38 @@ Attributes
 
    .. py:method:: goto(url: str)
 
+      open window at url
+
 
    .. py:method:: half_left_window()
 
+      half_left_window
 
-   .. py:method:: element(value, by='name', step=0.5, timeout=10)
+      Resize and shifts window to the left.
+
+
+   .. py:method:: element(value: str, by_attribue: str = 'id') -> list
 
       element method.
 
-      Select and element from current page.
+      Selects an element by type of attribute defined with 'by',
+      with 'value', from current page. See `thatscraper.ATTR_SELECTOR`
+      for a list of attributes types.
 
-      :param value: value of the attribute or tag defined in 'by'
+      If elements are na availiable yet,
+      the there will be an attempt every 'step' seconds, unitl excceed the
+      total time 'timeout' (in seconds).
+
+      :param value: attribute's value
       :type value: str
-      :param by: attribute, by default 'name'.
-                 See a list of attributes at ATTR_SELECTOR.keys()
-      :type by: str, optional
-      :param step: timeout step, by default 0.5
-      :type step: float, optional
-      :param timeout: timeout until throw error, by default 10
-      :type timeout: int, optional
+      :param by_attribute: attribute type., by default "id"
+      :type by_attribute: str, optional
 
       :returns: Element retrieved.
       :rtype: WebElement
 
 
-   .. py:method:: element_id(value, step=0.5, timeout=10)
+   .. py:method:: element_id(value: str) -> WebElement
 
       element_id
 
@@ -100,31 +111,84 @@ Attributes
 
       :param value: id's value.
       :type value: str
-      :param step: timeout step, by default 0.5
-      :type step: float, optional
-      :param timeout: timeout until throw error, by default 10
-      :type timeout: int, optional
 
       :returns: Element retrieved.
       :rtype: WebElement
 
 
-   .. py:method:: elements(value, by='name', step=0.5, timeout=10)
+   .. py:method:: elements(value: str, by_attribute: str = 'id') -> WebElements
+
+      elements
+
+      Selects elements by type of attribute defined with 'by',
+      with 'value', from current page. See `thatscraper.ATTR_SELECTOR`
+      for a list of attributes names.
+
+      If elements are na availiable yet,
+      the there will be an attempt every 'step' seconds, unitl excceed the
+      total time 'timeout' (in seconds).
+
+      :param value: attribute's value
+      :type value: str
+      :param by_attribute: attribute type, by default "id"
+      :type by_attribute: str, optional
+
+      :returns: List with all elements selected.
+      :rtype: WebElements
 
 
-   .. py:method:: child_of(element, value, by='name', step=0.5, timeout=10)
+   .. py:method:: child_of(element: WebDriver, value: str, by_attribute: str = 'id') -> WebElement
+
+      Selects child of `element`.
+
+      :param element: parent
+      :type element: WebDriver
+      :param value: Child's attribute's value.
+      :type value: str
+      :param by_attribute: Attribute.
+      :type by_attribute: str, optional
+
+      :returns: Child element.
+      :rtype: WebElement
 
 
-   .. py:method:: children_of(element, value, by='name', step=0.5, timeout=10)
+   .. py:method:: children_of(element, value, by_attribute='id') -> WebElements
+
+      Selects children of `element`.
+
+      :param element: parent
+      :type element: WebDriver
+      :param value: Children's attribute's value.
+      :type value: str
+      :param by_attribute: Attribute.
+      :type by_attribute: str, optional
+
+      :returns: Child element.
+      :rtype: list[WebElement] = WebElements
 
 
-   .. py:method:: click_element(element)
+   .. py:method:: click_element(element: WebElement) -> WebElement
+
+      click_element
+
+      Click a selected element.
+
+      :param element: Clickable (previously selected) element. If element
+                      is not clickable, selenium raises InvalidSelectorException.
+      :type element: WebElement
+
+      :returns: Clicked element (selenium web element).
+      :rtype: WebElement
 
 
-   .. py:method:: click(value, by='name', step=0.5, timeout=10)
+   .. py:method:: click(value: str, by_attribute: str = 'id') -> WebElement
+
+      "click on element
 
 
-   .. py:method:: click_id(id_value, step=0.5, timeout=10)
+   .. py:method:: click_id(id_value) -> WebElement
+
+      "quit element by id
 
 
    .. py:method:: send_to_element(element: WebElement, key, enter=False)
@@ -142,7 +206,7 @@ Attributes
       :rtype: WebElement
 
 
-   .. py:method:: send(key, value: str, by='name', enter=False, step=0.5, timeout=10)
+   .. py:method:: send(key, value: str, by_attribute='id', enter=False)
 
       send
 
@@ -177,7 +241,7 @@ Attributes
       :type n_times: int, optional
 
 
-   .. py:method:: arrow_down(value: str, by='name', step=0.5, timeout=10, n_times: int = 1, enter=False)
+   .. py:method:: arrow_down(value: str, by_attribute='id', n_times: int = 1, enter=False)
 
       arrow_down
 
@@ -211,7 +275,7 @@ Attributes
       :type n_times: int, optional
 
 
-   .. py:method:: arrow_up(value: str, by='name', step=0.5, timeout=10, n_times: int = 1, enter=False)
+   .. py:method:: arrow_up(value: str, by_attribute='id', n_times: int = 1, enter=False)
 
       arrow_up
 
@@ -233,19 +297,118 @@ Attributes
       :type enter: bool, optional
 
 
-   .. py:method:: get_items(parent, click=True)
+   .. py:method:: items_of(parent: WebElement, click=True) -> WebElements
+
+      items_of
+
+      Select li elements nested within 'parent'. Syntax:
+      ```html
+      <parent>
+          <ul>
+              <li></li>
+              <li></li>
+              ...
+              <li></li>
+          </ul>
+      </parent>
+      ```
+      :param parent: parent of ul element.
+      :type parent: WebElement
+      :param step: Time between trial calls, by default 0.5
+      :type step: float, optional
+      :param timeout: Total Timeout, by default 10
+      :type timeout: int, optional
+      :param click: Whether to click parent before and after, by default True
+      :type click: bool, optional
+
+      :returns: List of li elements.
+      :rtype: WebElements
+
+
+   .. py:method:: run_script(script: str)
+
+      run_script
+
+      Execute Javascript code given a string.
+
+      When interacting with log in forms or register,
+      prefer this method instead of `Crawler.send` or
+      `Crawler.send_to_element`.
+
+      :param script: Javascript code.
+      :type script: str
+
+      :returns: Whatever JavaScript code returns.
+      :rtype: unknown
+
+
+   .. py:method:: query_selector(selector: str)
+
+      run document.querySelector()
+
+
+   .. py:method:: value_to_selector(selector: str, value: str)
+
+      value_to_selector
+
+      Assing 'value' to value attribute of the
+      first element found with 'selector'.
+
+      When interacting with log in forms or register,
+      prefer this method instead of `Crawler.send` or
+      `Crawler.send_to_element`.
+
+      :param selector: Element selector.
+      :type selector: str
+      :param value:
+                    Element's value. Equivalent to:
+                        document.querySelector(selector).value=value
+                    in JavaScript.
+      :type value: str
+
+      :returns: Whatever JavaScript returns.
+      :rtype: unkown
+
+
+   .. py:method:: to_selector(selector: str, attribute: str, value: str)
+
+      value_to_selector
+
+      Assing 'value' to 'attribute' of the
+      first element found with 'selector'.
+
+      When interacting with log in forms or register,
+      prefer this method instead of `Crawler.send` or
+      `Crawler.send_to_element`.
+
+      :param selector: Element selector.
+      :type selector: str
+      :param value:
+                    Element's value. Equivalent to:
+                        document.querySelector(selector).value=value
+                    in JavaScript.
+      :type value: str
+
+      :returns: Whatever JavaScript returns.
+      :rtype: unkown
 
 
    .. py:method:: scroll_page()
 
-
-   .. py:method:: google(query, step=0.5, timeout=10)
-
-
-   .. py:method:: source()
+      scroll page 1 vh
 
 
-   .. py:method:: close()
+   .. py:method:: google(query)
+
+      select anchors from Google search page
+
+
+   .. py:method:: source() -> str
+
+      "source page
+
+
+   .. py:method:: close() -> None
 
       Closes the current window.
 
@@ -260,7 +423,7 @@ Attributes
 
    Bases: :py:obj:`selenium.webdriver.common.keys.Keys`
 
-   Set of special keys codes.
+   "keys to use in send functions
 
    .. py:attribute:: enter
       
@@ -288,6 +451,11 @@ Attributes
       
 
    .. py:attribute:: tab
+      
+
+      
+
+   .. py:attribute:: backspace
       
 
       
