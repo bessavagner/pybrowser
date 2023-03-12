@@ -166,7 +166,8 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 
 ## TODOs
 
-- [ ] Test all methods (current coverage: 67%).  
+- [ ] Fix loggers.
+- [ ] Test all methods (current coverage: 67%).
 - [ ] Implement data extraction modules and classes.  
 - [ ] Link or adapt to a database handler.
 - [ ] Implement an API boilerplate builder. That API is to serve data extracted from extractor modules and classes.

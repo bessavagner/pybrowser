@@ -131,7 +131,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
             raise CrawlerError(message)
         self.__browser = browser
         self.__driver = None
-        self.__options = Noneexecutable_path="."
+        self.__options = None
         self.__logger = log(self.__class__.__name__)
         self.timeout = 50
         self.quit_on_failure = quit_on_failure
@@ -141,8 +141,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
             if headless:
                 self.__options.headless = True
             driver = webdrivers[browser]["webdriver"]
-            self.__driver = driver(options=self.__options)
-            # self.__driver = driver(options=self.__options, **webdrivers[browser]["kwargs"])
+            self.__driver = driver(options=self.__options, **webdrivers[browser]["kwargs"])
         except WebDriverException as err:
             message = "You need to add the driver"
             message += f" for {browser} to your environment variables."
