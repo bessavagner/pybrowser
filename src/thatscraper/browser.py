@@ -204,7 +204,10 @@ class Crawler:  # pylint: disable=too-many-public-methods
         self.driver.set_window_rect(x=0, y=0, width=960, height=960)
 
     @quitdriver
-    def element(self, value: str, by_attribute: str = "id") -> list:
+    def element(self,
+                value: str,
+                by_attribute: str="id",
+                expected_condition=EC.presence_of_element_located) -> list:
         """
         element method.
 
@@ -212,7 +215,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
         with 'value', from current page. See `thatscraper.ATTR_SELECTOR`
         for a list of attributes types.
 
-        If elements are na availiable yet,
+        If elements are na available yet,
         the there will be an attempt every 'step' seconds, unitl excceed the
         total time 'timeout' (in seconds).
 
@@ -230,12 +233,14 @@ class Crawler:  # pylint: disable=too-many-public-methods
         """
         wait = WebDriverWait(self.driver, self.timeout)
         element = wait.until(
-            EC.presence_of_element_located((ATTR_SELECTOR[by_attribute], value))
+            expected_condition((ATTR_SELECTOR[by_attribute], value))
         )
         return element
 
     @quitdriver
-    def element_id(self, value: str) -> WebElement:
+    def element_id(self,
+                   value: str,
+                   expected_condition=EC.presence_of_element_located) -> WebElement:
         """
         element_id
 
@@ -251,10 +256,13 @@ class Crawler:  # pylint: disable=too-many-public-methods
         WebElement
             Element retrieved.
         """
-        return self.element(value, "id")
+        return self.element(value, "id", expected_condition)
 
     @quitdriver
-    def elements(self, value: str, by_attribute: str = "id") -> WebElements:
+    def elements(self,
+                 value: str,
+                 by_attribute: str="id",
+                 expected_condition=EC.presence_of_all_elements_located) -> WebElements:
         """
         elements
 
@@ -280,7 +288,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
         """
         wait = WebDriverWait(self.driver, self.timeout)
         elements = wait.until(
-            EC.presence_of_all_elements_located((ATTR_SELECTOR[by_attribute], value))
+            expected_condition((ATTR_SELECTOR[by_attribute], value))
         )
         return elements
 
@@ -318,7 +326,11 @@ class Crawler:  # pylint: disable=too-many-public-methods
         return child
 
     @quitdriver
-    def children_of(self, element, value, by_attribute="id") -> WebElements:
+    def children_of(self,
+                    element,
+                    value,
+                    by_attribute="id",
+                    expected_condition=EC.presence_of_all_elements_located) -> WebElements:
         """Selects children of `element`.
 
         Parameters
@@ -426,6 +438,11 @@ class Crawler:  # pylint: disable=too-many-public-methods
         """
         elem = self.element(value, by_attribute)
         return self.send_to_element(elem, key, enter)
+
+    @quitdriver
+    def esc(self,):
+        webdriver.ActionChains(self.driver).send_keys(Keys.ESCAPE).perform()
+
 
     @quitdriver
     def arrow_down_element(self, element, n_times: int = 1, enter=False):
