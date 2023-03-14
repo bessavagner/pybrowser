@@ -145,6 +145,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
             self.logger.error(str(err))
             self.logger.error(message)
             sys.exit(1)
+        self.wait = WebDriverWait(self.driver, self.timeout)
 
     def quitdriver(method: Callable) -> Callable:  # pylint: disable=E0213
         """ "safe quit webdriver to avoid memory leakages"""
