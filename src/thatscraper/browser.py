@@ -683,7 +683,7 @@ class Crawler:  # pylint: disable=too-many-public-methods
             Whatever JavaScript returns.
         """
         script = document_query_selector(selector)
-        script += f'.{attribute}="{value}";'
+        script += f'{attribute}="{value}";'
         return self.run_script(script)
 
     @quitdriver
