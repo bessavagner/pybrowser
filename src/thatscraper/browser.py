@@ -617,8 +617,8 @@ class Crawler:  # pylint: disable=too-many-public-methods
         """
         wait = WebDriverWait(self.driver, self.timeout)
 
-        def run():
-            return self.driver.execute_script(script)
+        def run(driver=self.driver):
+            return driver.execute_script(script)
 
         result = wait.until(run)
         return result
