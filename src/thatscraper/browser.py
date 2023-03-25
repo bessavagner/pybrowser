@@ -205,6 +205,17 @@ class Crawler:  # pylint: disable=too-many-public-methods
         self.driver.set_window_rect(x=0, y=0, width=960, height=960)
 
     @quitdriver
+    def half_right_window(
+        self,
+    ):
+        """
+        half_right_window
+
+        Resize and shifts window to the right.
+        """
+        self.driver.set_window_rect(x=960, y=0, width=960, height=960)
+
+    @quitdriver
     def element(self,
                 value: str,
                 by_attribute: str="id",

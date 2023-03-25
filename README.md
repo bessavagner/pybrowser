@@ -167,6 +167,7 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 ## TODOs
 
 - [ ] Fix loggers.
+- [ ] Fix `run_script`: the 'wait' holds execution. Change the expected condition?
 - [ ] Remove unnecessary dependencies.
 - [ ] Test all methods (current coverage: 67%).
 - [ ] Implement data extraction modules and classes.  
