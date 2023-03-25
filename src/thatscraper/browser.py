@@ -26,6 +26,11 @@ from .common.logger import log
 from .common.exceptions import CrawlerError
 
 
+OPERATING_SYSTEM = sys.platform
+FIREFOX_OPTIONS = webdriver.firefox.options.Options()
+if OPERATING_SYSTEM == 'win32':
+    FIREFOX_OPTIONS = webdriver.FirefoxOptions()
+
 # typing
 WebElement = webdriver.remote.webelement.WebElement
 WebElements = list[WebElement]
@@ -69,7 +74,7 @@ ATTR_SELECTOR = {
 webdrivers = {
     "firefox": {
         "webdriver": webdriver.Firefox,
-        "options": webdriver.firefox.options.Options(),
+        "options": FIREFOX_OPTIONS,
         # "profile": firefox_profile,
         "url": "https://github.com/mozilla/geckodriver/releases"
     },
